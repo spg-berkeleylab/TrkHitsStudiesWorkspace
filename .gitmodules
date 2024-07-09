@@ -1,0 +1,3 @@
+[submodule "packages/ClusterShapeAnalysis"]
+	path = packages/ClusterShapeAnalysis
+	url = git@github.com:spg-berkeleylab/ClusterShapeAnalysis.git
