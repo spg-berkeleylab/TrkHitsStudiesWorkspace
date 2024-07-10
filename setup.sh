@@ -21,11 +21,15 @@ export MYBUILD=$(realpath ${MYBUILD})
 
 #
 # Main software
-source /opt/setup_mucoll.sh
+if [ -z "${MUCOLL_RELEASE_VERSION}" ]; then
+    #Setup Muon Collider software
+    source /opt/setup_mucoll.sh
+fi
 
 #
 # Add exts
 if [ -d ${MYBUILD}/exts ]; then
+    echo "Updating PATH/LD_LIBRARY_PATH for packages in ${MYBUILD}/exts/"
     export LD_LIBRARY_PATH="$(find ${MYBUILD}/exts/* -name lib64 -type d | tr '\n' ':')$(find ${MYBUILD}/exts/* -name lib -type d | tr '\n' ':')${LD_LIBRARY_PATH}"
     export PATH="$(find ${MYBUILD}/exts/*/bin -type d | tr '\n' ':')${PATH}"
 fi
@@ -35,6 +39,7 @@ fi
 for pkglib in $(find ${MYBUILD}/packages -name '*.so' -type l -o -name '*.so' -type f)
 do
     pkgname=$(basename ${pkglib})
+    echo "Updating MARLIN_DLL for package ${pkgname}"
     if [[ "${MARLIN_DLL}" == *"${pkgname}"* ]]; then
         MARLIN_DLL=$(echo ${MARLIN_DLL} | sed -e 's|[^:]\+'${pkgname}'|'${pkglib}'|')
     else

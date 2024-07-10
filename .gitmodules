@@ -1,3 +1,6 @@
 [submodule "packages/ClusterShapeAnalysis"]
 	path = packages/ClusterShapeAnalysis
 	url = git@github.com:spg-berkeleylab/ClusterShapeAnalysis.git
+[submodule "packages/MuonCVXDDigitiser"]
+	path = packages/MuonCVXDDigitiser
+	url = git@github.com:MuonColliderSoft/MuonCVXDDigitiser.git
