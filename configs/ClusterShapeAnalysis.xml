@@ -1,0 +1,41 @@
+<processor name="MyTrackTruth" type="TrackTruthProc">
+    <parameter name="TrackCollection" type="string" lcioInType="Track">SiTracks</parameter>
+    <parameter name="MCParticleCollection" type="string" lcioInType="MCParticle">MCParticle</parameter>
+    <parameter name="TrackerHit2SimTrackerHitRelationName" type="StringVec" lcioInType="LCRelation">
+      VBTrackerHitsRelations
+      IBTrackerHitsRelations
+      OBTrackerHitsRelations
+      VETrackerHitsRelations
+      IETrackerHitsRelations
+      OETrackerHitsRelations
+    </parameter>
+    <parameter name="Particle2TrackRelationName" type="string" lcioOutType="LCRelation">MCParticle_SiTracks</parameter>
+  </processor>
+
+<processor name="MyClusterShapeAnalysis" type="ClusterShapeHistProc">
+    <parameter name="Verbosity" options="DEBUG0-9,MESSAGE0-9,WARNING0-9,ERROR0-9,SILENT">MESSAGE </parameter>
+    <!--Name of the MCParticle collection-->
+    <parameter name="MCParticleCollection" type="string" lcioInType="MCParticle">MCParticle</parameter>
+    
+    <!-- If following two parameters empty, will do analysis without tracks-->
+    <!--Name of the Track collection-->
+    <!-- SiTracks-->
+    <parameter name="TrackCollection" type="string" lcioInType="Track"> SiTracks</parameter>
+    <!--Relations-->
+    <!-- MCParticle_SiTracks -->
+    <parameter name="MCTrackRelationCollection" type="string" lcioInType="LCRelation"> MCParticle_SiTracks </parameter>
+
+    <!-- Tracker Hits-->
+    <parameter name="VBTrackerHitsCollection" type="string" lcioInType="TrackerHitPlane">VBTrackerHits </parameter>
+    <parameter name="IBTrackerHitsCollection" type="string" lcioInType="TrackerHitPlane">IBTrackerHits </parameter>
+    <parameter name="OBTrackerHitsCollection" type="string" lcioInType="TrackerHitPlane">OBTrackerHits </parameter>
+    <parameter name="VETrackerHitsCollection" type="string" lcioInType="TrackerHitPlane">VETrackerHits </parameter>
+    <parameter name="IETrackerHitsCollection" type="string" lcioInType="TrackerHitPlane">IETrackerHits </parameter>
+    <parameter name="OETrackerHitsCollection" type="string" lcioInType="TrackerHitPlane">OETrackerHits </parameter>
+    <parameter name="VBRelationCollection" type="string" lcioInType="LCRelation">VBTrackerHitsRelations </parameter>
+    <parameter name="IBRelationCollection" type="string" lcioInType="LCRelation">IBTrackerHitsRelations </parameter>
+    <parameter name="OBRelationCollection" type="string" lcioInType="LCRelation">OBTrackerHitsRelations </parameter>
+    <parameter name="VERelationCollection" type="string" lcioInType="LCRelation">VETrackerHitsRelations </parameter>
+    <parameter name="IERelationCollection" type="string" lcioInType="LCRelation">IETrackerHitsRelations </parameter>
+    <parameter name="OERelationCollection" type="string" lcioInType="LCRelation">OETrackerHitsRelations </parameter>
+</processor>
