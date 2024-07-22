@@ -57,12 +57,8 @@
   </execute>
 
 
-  <include ref="../../subconfigs/Overlay.xml"/>
-  <include ref="../../subconfigs/Digitization.xml"/>
-  <include ref="../../subconfigs/Tracking.xml"/>
-  <include ref="../../subconfigs/Filters.xml"/>
-  <include ref="../../subconfigs/LCTuple.xml"/>
-  <include ref="../../subconfigs/ClusterShapeAnalysis.xml"/>
+  
+  <include ref="ClusterShapeAnalysis.xml"/>
 
 
   <!-- ======================================================================================================== -->
@@ -133,7 +129,7 @@
     <!--InitializeDD4hep reads a compact xml file and initializes the dd4hep::Detector object-->
     <!--Name of the DD4hep compact xml file to load-->
     <parameter name="DD4hepXMLFile" type="string">
-      /opt/ilcsoft/muonc/detector-simulation/geometries/MuColl_v1.1/MuColl_v1.xml
+      /global/cfs/cdirs/atlas/sara2003/MuonCollider/geometry_files/MuColl/MuColl_v1/MuColl_v1.xml
       <!-- ~/detector-simulation/geometries/MuColl_10TeV_v0A/MuColl_10TeV_v0A.xml -->
     </parameter>
     <!--Alternate name for EncodingStringParameterName-->
