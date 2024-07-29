@@ -129,7 +129,7 @@
     <!--InitializeDD4hep reads a compact xml file and initializes the dd4hep::Detector object-->
     <!--Name of the DD4hep compact xml file to load-->
     <parameter name="DD4hepXMLFile" type="string">
-      /global/cfs/cdirs/atlas/sara2003/MuonCollider/geometry_files/MuColl/MuColl_v1/MuColl_v1.xml
+      /opt/spack/opt/spack/linux-almalinux9-x86_64/gcc-11.3.1/lcgeo-0.18.1-rv5ol74iupibxoku3ktvpgjseph6nj5k/share/lcgeo/compact/MuColl/MuColl_v1/MuColl_v1.xml
       <!-- ~/detector-simulation/geometries/MuColl_10TeV_v0A/MuColl_10TeV_v0A.xml -->
     </parameter>
     <!--Alternate name for EncodingStringParameterName-->
