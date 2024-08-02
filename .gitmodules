@@ -4,3 +4,6 @@
 [submodule "packages/MuonCVXDDigitiser"]
 	path = packages/MuonCVXDDigitiser
 	url = git@github.com:MuonColliderSoft/MuonCVXDDigitiser.git
+[submodule "packages/MarlinTrkProcessors"]
+	path = packages/MarlinTrkProcessors
+	url = git@github.com:spg-berkeleylab/MarlinTrkProcessors.git
