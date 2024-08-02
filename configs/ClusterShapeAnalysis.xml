@@ -30,12 +30,12 @@
     <parameter name="IBTrackerHitsCollection" type="string" lcioInType="TrackerHitPlane">IBTrackerHits </parameter>
     <parameter name="OBTrackerHitsCollection" type="string" lcioInType="TrackerHitPlane">OBTrackerHits </parameter>
     <parameter name="VETrackerHitsCollection" type="string" lcioInType="TrackerHitPlane">VETrackerHits </parameter>
-    <parameter name="IETrackerHitsCollection" type="string" lcioInType="TrackerHitPlane">IETrackerHits </parameter>
-    <parameter name="OETrackerHitsCollection" type="string" lcioInType="TrackerHitPlane">OETrackerHits </parameter>
+    <parameter name="IETrackerHitsCollection" type="string" lcioInType="TrackerHitPlane">ITEndcapHits </parameter>
+    <parameter name="OETrackerHitsCollection" type="string" lcioInType="TrackerHitPlane">OTEndcapHits </parameter>
     <parameter name="VBRelationCollection" type="string" lcioInType="LCRelation">VBTrackerHitsRelations </parameter>
     <parameter name="IBRelationCollection" type="string" lcioInType="LCRelation">IBTrackerHitsRelations </parameter>
     <parameter name="OBRelationCollection" type="string" lcioInType="LCRelation">OBTrackerHitsRelations </parameter>
     <parameter name="VERelationCollection" type="string" lcioInType="LCRelation">VETrackerHitsRelations </parameter>
-    <parameter name="IERelationCollection" type="string" lcioInType="LCRelation">IETrackerHitsRelations </parameter>
-    <parameter name="OERelationCollection" type="string" lcioInType="LCRelation">OETrackerHitsRelations </parameter>
+    <parameter name="IERelationCollection" type="string" lcioInType="LCRelation">ITEndcapHitsRelations </parameter>
+    <parameter name="OERelationCollection" type="string" lcioInType="LCRelation">OTEndcapHitsRelations </parameter>
 </processor>
