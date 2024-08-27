@@ -23,6 +23,10 @@
     <processor name="OuterPlanarRealisticDigi"/>
     <processor name="OTEndcapDigitiser"/>
 
+    <!-- ========== Output ========== -->
+    <processor name="LCIOWriter_all"/>
+    <processor name="LCIOWriter_light"/>
+
   </execute>
 
 
