@@ -858,9 +858,9 @@ ClusterFilter_OBLoose.Parameters = {
 
 if (not the_args.doTrkDigiSimple):
     if (not the_args.doClusterFilter):
-        label=""
+        labelTrkDigiCollection=""
     else:
-        label="_Unfiltered"
+        labelTrkDigiCollection="_Unfiltered"
 
 HitTimeFilter_VXB = MarlinProcessorWrapper("HitTimeFilter_VXB")
 HitTimeFilter_VXB.OutputLevel = INFO
@@ -869,9 +869,9 @@ HitTimeFilter_VXB.Parameters = {
     "TrackerHitInputCollections": ["VBTrackerHits_realDigi"],
     "TrackerSimHitInputCollections": ["VertexBarrelCollection"],
     "TrackerHitInputRelations": ["VBTrackerHitsRelations_realDigi"],
-    "TrackerHitOutputCollections": ["VBTrackerHits"+label],
+    "TrackerHitOutputCollections": ["VBTrackerHits"+labelTrkDigiCollection],
     "TrackerSimHitOutputCollections": ["VertexBarrelCollection_HTF"],
-    "TrackerHitOutputRelations": ["VBTrackerHitsRelations"+label],
+    "TrackerHitOutputRelations": ["VBTrackerHitsRelations"+labelTrkDigiCollection],
     "TimeLowerLimit": ["-0.09"],
     "TimeUpperLimit": ["0.15"],
     "FillHistograms": ["true"]
@@ -884,9 +884,9 @@ HitTimeFilter_VXE.Parameters = {
     "TrackerHitInputCollections": ["VETrackerHits_realDigi"],
     "TrackerSimHitInputCollections": ["VertexEndcapCollection"],
     "TrackerHitInputRelations": ["VETrackerHitsRelations_realDigi"],
-    "TrackerHitOutputCollections": ["VETrackerHits"+label],
+    "TrackerHitOutputCollections": ["VETrackerHits"+labelTrkDigiCollection],
     "TrackerSimHitOutputCollections": ["VertexEndcapCollection_HTF"],
-    "TrackerHitOutputRelations": ["VETrackerHitsRelations"+label],
+    "TrackerHitOutputRelations": ["VETrackerHitsRelations"+labelTrkDigiCollection],
     "TimeLowerLimit": ["-0.09"],
     "TimeUpperLimit": ["0.15"],
     "FillHistograms": ["true"]
@@ -899,9 +899,9 @@ HitTimeFilter_ITB.Parameters = {
     "TrackerHitInputCollections": ["IBTrackerHits_realDigi"],
     "TrackerSimHitInputCollections": ["InnerTrackerBarrelCollection"],
     "TrackerHitInputRelations": ["IBTrackerHitsRelations_realDigi"],
-    "TrackerHitOutputCollections": ["IBTrackerHits"+label],
+    "TrackerHitOutputCollections": ["IBTrackerHits"+labelTrkDigiCollection],
     "TrackerSimHitOutputCollections": ["InnerTrackerBarrelCollection_HTF"],
-    "TrackerHitOutputRelations": ["IBTrackerHitsRelations"+label],
+    "TrackerHitOutputRelations": ["IBTrackerHitsRelations"+labelTrkDigiCollection],
     "TimeLowerLimit": ["-0.18"],
     "TimeUpperLimit": ["0.3"],
     "FillHistograms": ["true"]
@@ -914,9 +914,9 @@ HitTimeFilter_ITE.Parameters = {
     "TrackerHitInputCollections": ["IETrackerHits_realDigi"],
     "TrackerSimHitInputCollections": ["InnerTrackerEndcapCollection"],
     "TrackerHitInputRelations": ["IETrackerHitsRelations_realDigi"],
-    "TrackerHitOutputCollections": ["IETrackerHits"+label],
+    "TrackerHitOutputCollections": ["IETrackerHits"+labelTrkDigiCollection],
     "TrackerSimHitOutputCollections": ["InnerTrackerEndcapCollection_HTF"],
-    "TrackerHitOutputRelations": ["IETrackerHitsRelations"+label],
+    "TrackerHitOutputRelations": ["IETrackerHitsRelations"+labelTrkDigiCollection],
     "TimeLowerLimit": ["-0.18"],
     "TimeUpperLimit": ["0.3"],
     "FillHistograms": ["true"]
@@ -930,9 +930,9 @@ HitTimeFilter_OTB.Parameters = {
     "TrackerHitInputCollections": ["OBTrackerHits_realDigi"],
     "TrackerSimHitInputCollections": ["OuterTrackerBarrelCollection"],
     "TrackerHitInputRelations": ["OBTrackerHitsRelations_realDigi"],
-    "TrackerHitOutputCollections": ["OBTrackerHits"+label],
+    "TrackerHitOutputCollections": ["OBTrackerHits"+labelTrkDigiCollection],
     "TrackerSimHitOutputCollections": ["OuterTrackerBarrelCollection_HTF"],
-    "TrackerHitOutputRelations": ["OBTrackerHitsRelations"+label],
+    "TrackerHitOutputRelations": ["OBTrackerHitsRelations"+labelTrkDigiCollection],
     "TimeLowerLimit": ["-0.18"],
     "TimeUpperLimit": ["0.3"],
     "FillHistograms": ["true"]
@@ -945,9 +945,9 @@ HitTimeFilter_OTE.Parameters = {
     "TrackerHitInputCollections": ["OETrackerHits_realDigi"],
     "TrackerSimHitInputCollections": ["OuterTrackerEndcapCollection"],
     "TrackerHitInputRelations": ["OETrackerHitsRelations_realDigi"],
-    "TrackerHitOutputCollections": ["OETrackerHits"+label],
+    "TrackerHitOutputCollections": ["OETrackerHits"+labelTrkDigiCollection],
     "TrackerSimHitOutputCollections": ["OuterTrackerEndcapCollection_HTF"],
-    "TrackerHitOutputRelations": ["OETrackerHitsRelations"+label],
+    "TrackerHitOutputRelations": ["OETrackerHitsRelations"+labelTrkDigiCollection],
     "TimeLowerLimit": ["-0.18"],
     "TimeUpperLimit": ["0.3"],
     "FillHistograms": ["true"]
@@ -961,58 +961,49 @@ if the_args.doOverlayFull:
 if the_args.doOverlayIP:
     algList.append(OverlayIP)     # Incoherent pairs full BX BIB overlay
 
-if not the_args.doClusterFilter:
-    if (not the_args.doTrkDigiSimple): # setup realistic tracker digitization, where supported
-        algList.append(VXDBarrelRealisticDigi)
-        algList.append(VXDEndcapRealisticDigi)
-        algList.append(InnerPlanarRealisticDigi)
-        algList.append(InnerEndcapRealisticDigi)
-#        algList.append(OuterPlanarRealisticDigi)
-        algList.append(OTBarrelDigitiser)
-        algList.append(OTEndcapDigitiser)
-        #hit time filters
-        algList.append(HitTimeFilter_VXB)
-        algList.append(HitTimeFilter_VXE)
-        algList.append(HitTimeFilter_ITB)
-        algList.append(HitTimeFilter_ITE)
-        #        algList.append(HitTimeFilter_OTB)
-    else: # simplified digitization
-        algList.append(VXDBarrelDigitiser)
-        algList.append(VXDEndcapDigitiser)
-        algList.append(ITBarrelDigitiser)
-        algList.append(ITEndcapDigitiser)
-        algList.append(OTBarrelDigitiser)
-        algList.append(OTEndcapDigitiser)
+if (the_args.doTrkDigiSimple):
+    # check that filters needing full digi are not enabled
+    if not the_args.doClusterFilter:
+        print("Cluster filter only to be applied only on realistic digitization. Please re-run without the option --doTrkDigiSimple.")
+        exit()
 
-if the_args.doClusterFilter:
-    if (not the_args.doTrkDigiSimple): #realistic digitization
-        algList.append(VXDBarrelRealisticDigi)
-        algList.append(VXDEndcapRealisticDigi)
-        algList.append(InnerPlanarRealisticDigi)
-        algList.append(InnerEndcapRealisticDigi)
-#        algList.append(OuterPlanarRealisticDigi)
-        algList.append(OTBarrelDigitiser)
-        algList.append(OTEndcapDigitiser)
-	#hit time filters 
-        algList.append(HitTimeFilter_VXB)
-        algList.append(HitTimeFilter_VXE)
-        algList.append(HitTimeFilter_ITB)
-        algList.append(HitTimeFilter_ITE)
-#        algList.append(HitTimeFilter_OTB)
-        #cluster shape filter
+    # schedule simplified digitization processors
+    algList.append(VXDBarrelDigitiser)
+    algList.append(VXDEndcapDigitiser)
+    algList.append(ITBarrelDigitiser)
+    algList.append(ITEndcapDigitiser)
+    algList.append(OTBarrelDigitiser)
+    algList.append(OTEndcapDigitiser)
+
+else:
+    # schedule realistic digitization
+    algList.append(VXDBarrelRealisticDigi)
+    algList.append(VXDEndcapRealisticDigi)
+    algList.append(InnerPlanarRealisticDigi)
+    algList.append(InnerEndcapRealisticDigi)
+#    algList.append(OuterPlanarRealisticDigi)
+    algList.append(OTBarrelDigitiser)
+    algList.append(OTEndcapDigitiser)
+
+    # schedule time-based cluster filters
+    algList.append(HitTimeFilter_VXB)
+    algList.append(HitTimeFilter_VXE)
+    algList.append(HitTimeFilter_ITB)
+    algList.append(HitTimeFilter_ITE)
+#    algList.append(HitTimeFilter_OTB)    
+    
+    if the_args.doClusterFilter:
+        # schedule shape-based cluster filters
         algList.append(ClusterFilter_VBLoose)
         algList.append(ClusterFilter_VELoose)
 #        algList.append(ClusterFilter_IBLoose)
 #        algList.append(ClusterFilter_IELoose)
-#        algList.append(ClusterFilter_OBLoose)
-        
-    else:
-        print("Cluster filter only to be applied only on realistic digitization. Please re-run without the option --doTrkDigiSimple.")
-        exit()
+#        algList.append(ClusterFilter_OBLoose)           
 
-if the_args.doFilterDL:
+if the_args.doFilterDL:    
     algList.append(FilterDL_VXDB)
     algList.append(FilterDL_VXDE)
+
 algList.append(ECalBarrelDigi)
 algList.append(ECalBarrelReco)
 algList.append(ECalPlugDigi)
