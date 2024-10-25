@@ -779,8 +779,8 @@ ClusterFilter_VBLoose.Parameters = {
     "ClusterSize": ["6","5","4","5","6","7","6","5","6","7","5","5","4","5","5","5","5","4","5","5","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4"],
     "ThetaBins": ["6"],
     "Layers": ["0","1","2","3","4","5","6","7"],
-    "InTrackerHitCollection": ["VBTrackerHits_Unfiltered"],
-    "InRelationCollection": ["VBTrackerHitsRelations_Unfiltered"],
+    "InTrackerHitCollection": ["VBTrackerHits_HTF"],
+    "InRelationCollection": ["VBTrackerHitsRelations_HTF"],
     "InSimTrackerHitCollection": ["VertexBarrelCollection_HTF"],
     "OutTrackerHitCollection": ["VBTrackerHits"],
     "OutRelationCollection": ["VBTrackerHitsRelations"],
@@ -796,8 +796,8 @@ ClusterFilter_VELoose.Parameters = {
     "ClusterSize": ["4","5","0","5","4","4","5","0","5","4","4","5","0","5","4","4","5","0","5","4","4","0","0","0","4","4","0","0","0","4","4","0","0","0","4","4","0","0","0","4"],
     "ThetaBins": ["6"],
     "Layers": ["0","1","2","3","4","5","6","7"],
-    "InTrackerHitCollection": ["VETrackerHits_Unfiltered"],
-    "InRelationCollection": ["VETrackerHitsRelations_Unfiltered"],
+    "InTrackerHitCollection": ["VETrackerHits_HTF"],
+    "InRelationCollection": ["VETrackerHitsRelations_HTF"],
     "InSimTrackerHitCollection": ["VertexEndcapCollection_HTF"],
     "OutTrackerHitCollection": ["VETrackerHits"],
     "OutRelationCollection": ["VETrackerHitsRelations"],
@@ -813,8 +813,8 @@ ClusterFilter_IBLoose.Parameters = {
     "ClusterSize": ["4","4","3","4","4","3","3","3","3","3","3","3","3","3","3"],
     "ThetaBins": ["6"],
     "Layers": ["0","1","2"],
-    "InTrackerHitCollection": ["IBTrackerHits_Unfiltered"],
-    "InRelationCollection": ["IBTrackerHitsRelations_Unfiltered"],
+    "InTrackerHitCollection": ["IBTrackerHits_HTF"],
+    "InRelationCollection": ["IBTrackerHitsRelations_HTF"],
     "InSimTrackerHitCollection": ["InnerTrackerBarrelCollection_HTF"],
     "OutTrackerHitCollection": ["IBTrackerHits"],
     "OutRelationCollection": ["IBTrackerHitsRelations"],
@@ -830,9 +830,9 @@ ClusterFilter_IELoose.Parameters = {
     "ClusterSize": ["3","0","3","3","0","3","3","0","3"],
     "ThetaBins": ["4"],
     "Layers": ["0","1","2"],
-    "InTrackerHitCollection": ["IETrackerHits_Unfiltered"],
+    "InTrackerHitCollection": ["IETrackerHits_HTF"],
     "InSimTrackerHitCollection": ["InnerTrackerEndcapCollection_HTF"],
-    "InRelationCollection": ["IETrackerHitsRelations_Unfiltered"],
+    "InRelationCollection": ["IETrackerHitsRelations_HTF"],
     "OutTrackerHitCollection": ["IETrackerHits"],
     "OutRelationCollection": ["IETrackerHitsRelations"],
     "OutSimTrackerHitCollection": ["InnerTrackerEndcapCollection_CF"],
@@ -847,8 +847,8 @@ ClusterFilter_OBLoose.Parameters = {
     "ClusterSize": ["3","3","3","3","3","3","3","3","3","3","3","3","3","3","3"],
     "ThetaBins": ["6"],
     "Layers": ["0","1","2"],
-    "InTrackerHitCollection": ["OBTrackerHits_Unfiltered"],
-    "InRelationCollection": ["OBTrackerHitsRelations_Unfiltered"],
+    "InTrackerHitCollection": ["OBTrackerHits_HTF"],
+    "InRelationCollection": ["OBTrackerHitsRelations_HTF"],
     "InSimTrackerHitCollection": ["OuterTrackerBarrelCollection_HTF"],
     "OutTrackerHitCollection": ["OBTrackerHits"],
     "OutRelationCollection": ["OBTrackerHitsRelations"],
@@ -860,7 +860,7 @@ if (not the_args.doTrkDigiSimple):
     if (not the_args.doClusterFilter):
         labelTrkDigiCollection=""
     else:
-        labelTrkDigiCollection="_Unfiltered"
+        labelTrkDigiCollection="_HTF" #Hit-Time filter
 
 HitTimeFilter_VXB = MarlinProcessorWrapper("HitTimeFilter_VXB")
 HitTimeFilter_VXB.OutputLevel = INFO
@@ -1023,7 +1023,7 @@ if the_args.writeAll:
     algList.append(LCIOWriter_all)
 else:
     if the_args.doClusterFilter:
-        LCIOWriter_light.Parameters["DropCollectionNames"]=["MCParticle", "VBTrackerHits_Unfiltered", "IBTrackerHits_Unfiltered", "OBTrackerHits_Unfiltered", "VBTrackerHits_realDigi", "VETrackerHits_realDigi", "IBTrackerHits_realDigi", "IETrackerHits_realDigi", "OBTrackerHits_realDigi"]
+        LCIOWriter_light.Parameters["DropCollectionNames"]=["MCParticle", "VBTrackerHits_HTF", "IBTrackerHits_HTF", "OBTrackerHits_HTF", "VBTrackerHits_realDigi", "VETrackerHits_realDigi", "IBTrackerHits_realDigi", "IETrackerHits_realDigi", "OBTrackerHits_realDigi"]
     algList.append(LCIOWriter_light)
 
 from Configurables import ApplicationMgr
