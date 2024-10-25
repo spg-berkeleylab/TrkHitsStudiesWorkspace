@@ -394,7 +394,7 @@ InnerEndcapRealisticDigi.Parameters = {
                                        }
 
 OuterPlanarRealisticDigi = MarlinProcessorWrapper("OuterPlanarRealisticDigi")
-OuterPlanarRealisticDigi.OutputLevel = DEBUG
+OuterPlanarRealisticDigi.OutputLevel = INFO
 OuterPlanarRealisticDigi.ProcessorType = "MuonCVXDDigitiser"
 OuterPlanarRealisticDigi.Parameters = {
                                        "ChargeDigitizeBinning": ["1"],
