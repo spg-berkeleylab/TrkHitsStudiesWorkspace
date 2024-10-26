@@ -267,11 +267,11 @@ VXDBarrelRealisticDigi.Parameters = {
                                      "EnergyLoss": ["280.0"],
                                      "MaxEnergyDelta": ["100.0"],
                                      "MaxTrackLength": ["10.0"],
-                                     "OutputCollectionName": ["VBTrackerHits_realDigi"],
+                                     "OutputCollectionName": ["VXDBarrelHits_realDigi"],
                                      "PixelSizeX": ["0.025"],
                                      "PixelSizeY": ["0.025"],
                                      "PoissonSmearing": ["1"],
-                                     "RelationColName": ["VBTrackerHitsRelations_realDigi"],
+                                     "RelationColName": ["VXDBarrelHitsRelations_realDigi"],
                                      "SegmentLength": ["0.005"],
                                      "StoreFiredPixels": ["1"],
                                      "SubDetectorName": ["VertexBarrel"],
@@ -303,11 +303,11 @@ VXDEndcapRealisticDigi.Parameters = {
                                      "EnergyLoss": ["280.0"],
                                      "MaxEnergyDelta": ["100.0"],
                                      "MaxTrackLength": ["10.0"],
-                                     "OutputCollectionName": ["VETrackerHits_realDigi"],
+                                     "OutputCollectionName": ["VXDEndcapHits_realDigi"],
                                      "PixelSizeX": ["0.025"],
                                      "PixelSizeY": ["0.025"],
                                      "PoissonSmearing": ["1"],
-                                     "RelationColName": ["VETrackerHitsRelations_realDigi"],
+                                     "RelationColName": ["VXDEndcapHitsRelations_realDigi"],
                                      "SegmentLength": ["0.005"],
                                      "StoreFiredPixels": ["1"],
                                      "SubDetectorName": ["VertexEndcap"],
@@ -339,11 +339,11 @@ InnerPlanarRealisticDigi.Parameters = {
                                        "EnergyLoss": ["280.0"],
                                        "MaxEnergyDelta": ["100.0"],
                                        "MaxTrackLength": ["10.0"],
-                                       "OutputCollectionName": ["IBTrackerHits_realDigi"],
+                                       "OutputCollectionName": ["ITBarrelHits_realDigi"],
                                        "PixelSizeX": ["0.050"],
                                        "PixelSizeY": ["1.0"],
                                        "PoissonSmearing": ["1"],
-                                       "RelationColName": ["IBTrackerHitsRelations_realDigi"],
+                                       "RelationColName": ["ITBarrelHitsRelations_realDigi"],
                                        "SegmentLength": ["0.005"],
                                        "StoreFiredPixels": ["1"],
                                        "SubDetectorName": ["InnerTrackerBarrel"],
@@ -375,11 +375,11 @@ InnerEndcapRealisticDigi.Parameters = {
                                        "EnergyLoss": ["280.0"],
                                        "MaxEnergyDelta": ["100.0"],
                                        "MaxTrackLength": ["10.0"],
-                                       "OutputCollectionName": ["IETrackerHits_realDigi"],
+                                       "OutputCollectionName": ["ITEndcapHits_realDigi"],
                                        "PixelSizeX": ["0.050"],
                                        "PixelSizeY": ["1.0"],
                                        "PoissonSmearing": ["1"],
-                                       "RelationColName": ["IETrackerHitsRelations_realDigi"],
+                                       "RelationColName": ["ITEndcapHitsRelations_realDigi"],
                                        "SegmentLength": ["0.005"],
                                        "StoreFiredPixels": ["1"],
                                        "SubDetectorName": ["InnerTrackerEndcap"],
@@ -411,11 +411,11 @@ OuterPlanarRealisticDigi.Parameters = {
                                        "EnergyLoss": ["280.0"],
                                        "MaxEnergyDelta": ["100.0"],
                                        "MaxTrackLength": ["10.0"],
-                                       "OutputCollectionName": ["OBTrackerHits_realDigi"],
+                                       "OutputCollectionName": ["OTBarrelHits_realDigi"],
                                        "PixelSizeX": ["0.050"],
                                        "PixelSizeY": ["10.0"],
                                        "PoissonSmearing": ["1"],
-                                       "RelationColName": ["OBTrackerHitsRelations_realDigi"],
+                                       "RelationColName": ["OTBarrelHitsRelations_realDigi"],
                                        "SegmentLength": ["0.005"],
                                        "StoreFiredPixels": ["1"],
                                        "SubDetectorName": ["OuterTrackerBarrel"],
@@ -447,11 +447,11 @@ OuterEndcapRealisticDigi.Parameters = {
                                        "EnergyLoss": ["280.0"],
                                        "MaxEnergyDelta": ["100.0"],
                                        "MaxTrackLength": ["10.0"],
-                                       "OutputCollectionName": ["OETrackerHits_realDigi"],
+                                       "OutputCollectionName": ["OTEndcapHits_realDigi"],
                                        "PixelSizeX": ["0.050"],
                                        "PixelSizeY": ["10.0"],
                                        "PoissonSmearing": ["1"],
-                                       "RelationColName": ["OETrackerHitsRelations_realDigi"],
+                                       "RelationColName": ["OTEndcapHitsRelations_realDigi"],
                                        "SegmentLength": ["0.005"],
                                        "StoreFiredPixels": ["1"],
                                        "SubDetectorName": ["OuterTrackerEndcap"],
@@ -779,11 +779,11 @@ ClusterFilter_VBLoose.Parameters = {
     "ClusterSize": ["6","5","4","5","6","7","6","5","6","7","5","5","4","5","5","5","5","4","5","5","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4"],
     "ThetaBins": ["6"],
     "Layers": ["0","1","2","3","4","5","6","7"],
-    "InTrackerHitCollection": ["VBTrackerHits_HTF"],
-    "InRelationCollection": ["VBTrackerHitsRelations_HTF"],
+    "InTrackerHitCollection": ["VXDBarrelHits_HTF"],
+    "InRelationCollection": ["VXDBarrelHitsRelations_HTF"],
     "InSimTrackerHitCollection": ["VertexBarrelCollection_HTF"],
-    "OutTrackerHitCollection": ["VBTrackerHits"],
-    "OutRelationCollection": ["VBTrackerHitsRelations"],
+    "OutTrackerHitCollection": ["VXDBarrelHits"],
+    "OutRelationCollection": ["VXDBarrelHitsRelations"],
     "OutSimTrackerHitCollection": ["VertexBarrelCollection_CF"],
     "FillHistograms": ["true"]
 }
@@ -796,11 +796,11 @@ ClusterFilter_VELoose.Parameters = {
     "ClusterSize": ["4","5","0","5","4","4","5","0","5","4","4","5","0","5","4","4","5","0","5","4","4","0","0","0","4","4","0","0","0","4","4","0","0","0","4","4","0","0","0","4"],
     "ThetaBins": ["6"],
     "Layers": ["0","1","2","3","4","5","6","7"],
-    "InTrackerHitCollection": ["VETrackerHits_HTF"],
-    "InRelationCollection": ["VETrackerHitsRelations_HTF"],
+    "InTrackerHitCollection": ["VXDEndcapHits_HTF"],
+    "InRelationCollection": ["VXDEndcapHitsRelations_HTF"],
     "InSimTrackerHitCollection": ["VertexEndcapCollection_HTF"],
-    "OutTrackerHitCollection": ["VETrackerHits"],
-    "OutRelationCollection": ["VETrackerHitsRelations"],
+    "OutTrackerHitCollection": ["VXDEndcapHits"],
+    "OutRelationCollection": ["VXDEndcapHitsRelations"],
     "OutSimTrackerHitCollection": ["VertexEndcapCollection_CF"],
     "FillHistograms": ["true"]
 }
@@ -813,11 +813,11 @@ ClusterFilter_IBLoose.Parameters = {
     "ClusterSize": ["4","4","3","4","4","3","3","3","3","3","3","3","3","3","3"],
     "ThetaBins": ["6"],
     "Layers": ["0","1","2"],
-    "InTrackerHitCollection": ["IBTrackerHits_HTF"],
-    "InRelationCollection": ["IBTrackerHitsRelations_HTF"],
+    "InTrackerHitCollection": ["ITBarrelHits_HTF"],
+    "InRelationCollection": ["ITBarrelHitsRelations_HTF"],
     "InSimTrackerHitCollection": ["InnerTrackerBarrelCollection_HTF"],
-    "OutTrackerHitCollection": ["IBTrackerHits"],
-    "OutRelationCollection": ["IBTrackerHitsRelations"],
+    "OutTrackerHitCollection": ["ITBarrelHits"],
+    "OutRelationCollection": ["ITBarrelHitsRelations"],
     "OutSimTrackerHitCollection": ["InnerTrackerBarrelCollection_CF"],
     "FillHistograms": ["true"]
 }
@@ -830,11 +830,11 @@ ClusterFilter_IELoose.Parameters = {
     "ClusterSize": ["3","0","3","3","0","3","3","0","3"],
     "ThetaBins": ["4"],
     "Layers": ["0","1","2"],
-    "InTrackerHitCollection": ["IETrackerHits_HTF"],
+    "InTrackerHitCollection": ["ITEndcapHits_HTF"],
     "InSimTrackerHitCollection": ["InnerTrackerEndcapCollection_HTF"],
-    "InRelationCollection": ["IETrackerHitsRelations_HTF"],
-    "OutTrackerHitCollection": ["IETrackerHits"],
-    "OutRelationCollection": ["IETrackerHitsRelations"],
+    "InRelationCollection": ["ITEndcapHitsRelations_HTF"],
+    "OutTrackerHitCollection": ["ITEndcapHits"],
+    "OutRelationCollection": ["ITEndcapHitsRelations"],
     "OutSimTrackerHitCollection": ["InnerTrackerEndcapCollection_CF"],
     "FillHistograms": ["true"]
 }
@@ -847,11 +847,11 @@ ClusterFilter_OBLoose.Parameters = {
     "ClusterSize": ["3","3","3","3","3","3","3","3","3","3","3","3","3","3","3"],
     "ThetaBins": ["6"],
     "Layers": ["0","1","2"],
-    "InTrackerHitCollection": ["OBTrackerHits_HTF"],
-    "InRelationCollection": ["OBTrackerHitsRelations_HTF"],
+    "InTrackerHitCollection": ["OTBarrelHits_HTF"],
+    "InRelationCollection": ["OTBarrelHitsRelations_HTF"],
     "InSimTrackerHitCollection": ["OuterTrackerBarrelCollection_HTF"],
-    "OutTrackerHitCollection": ["OBTrackerHits"],
-    "OutRelationCollection": ["OBTrackerHitsRelations"],
+    "OutTrackerHitCollection": ["OTBarrelHits"],
+    "OutRelationCollection": ["OTBarrelHitsRelations"],
     "OutSimTrackerHitCollection": ["OuterTrackerBarrelCollection_CF"],
     "FillHistograms": ["true"]
 }
@@ -866,12 +866,12 @@ HitTimeFilter_VXB = MarlinProcessorWrapper("HitTimeFilter_VXB")
 HitTimeFilter_VXB.OutputLevel = INFO
 HitTimeFilter_VXB.ProcessorType = "FilterTimeHits"
 HitTimeFilter_VXB.Parameters = {
-    "TrackerHitInputCollections": ["VBTrackerHits_realDigi"],
+    "TrackerHitInputCollections": ["VXDBarrelHits_realDigi"],
     "TrackerSimHitInputCollections": ["VertexBarrelCollection"],
-    "TrackerHitInputRelations": ["VBTrackerHitsRelations_realDigi"],
-    "TrackerHitOutputCollections": ["VBTrackerHits"+labelTrkDigiCollection],
+    "TrackerHitInputRelations": ["VXDBarrelHitsRelations_realDigi"],
+    "TrackerHitOutputCollections": ["VXDBarrelHits"+labelTrkDigiCollection],
     "TrackerSimHitOutputCollections": ["VertexBarrelCollection_HTF"],
-    "TrackerHitOutputRelations": ["VBTrackerHitsRelations"+labelTrkDigiCollection],
+    "TrackerHitOutputRelations": ["VXDBarrelHitsRelations"+labelTrkDigiCollection],
     "TimeLowerLimit": ["-0.09"],
     "TimeUpperLimit": ["0.15"],
     "FillHistograms": ["true"]
@@ -881,12 +881,12 @@ HitTimeFilter_VXE = MarlinProcessorWrapper("HitTimeFilter_VXE")
 HitTimeFilter_VXE.OutputLevel = INFO
 HitTimeFilter_VXE.ProcessorType = "FilterTimeHits"
 HitTimeFilter_VXE.Parameters = {
-    "TrackerHitInputCollections": ["VETrackerHits_realDigi"],
+    "TrackerHitInputCollections": ["VXDEndcapHits_realDigi"],
     "TrackerSimHitInputCollections": ["VertexEndcapCollection"],
-    "TrackerHitInputRelations": ["VETrackerHitsRelations_realDigi"],
-    "TrackerHitOutputCollections": ["VETrackerHits"+labelTrkDigiCollection],
+    "TrackerHitInputRelations": ["VXDEndcapHitsRelations_realDigi"],
+    "TrackerHitOutputCollections": ["VXDEndcapHits"+labelTrkDigiCollection],
     "TrackerSimHitOutputCollections": ["VertexEndcapCollection_HTF"],
-    "TrackerHitOutputRelations": ["VETrackerHitsRelations"+labelTrkDigiCollection],
+    "TrackerHitOutputRelations": ["VXDEndcapHitsRelations"+labelTrkDigiCollection],
     "TimeLowerLimit": ["-0.09"],
     "TimeUpperLimit": ["0.15"],
     "FillHistograms": ["true"]
@@ -896,12 +896,12 @@ HitTimeFilter_ITB = MarlinProcessorWrapper("HitTimeFilter_ITB")
 HitTimeFilter_ITB.OutputLevel = INFO
 HitTimeFilter_ITB.ProcessorType = "FilterTimeHits"
 HitTimeFilter_ITB.Parameters = {
-    "TrackerHitInputCollections": ["IBTrackerHits_realDigi"],
+    "TrackerHitInputCollections": ["ITBarrelHits_realDigi"],
     "TrackerSimHitInputCollections": ["InnerTrackerBarrelCollection"],
-    "TrackerHitInputRelations": ["IBTrackerHitsRelations_realDigi"],
-    "TrackerHitOutputCollections": ["IBTrackerHits"+labelTrkDigiCollection],
+    "TrackerHitInputRelations": ["ITBarrelHitsRelations_realDigi"],
+    "TrackerHitOutputCollections": ["ITBarrelHits"+labelTrkDigiCollection],
     "TrackerSimHitOutputCollections": ["InnerTrackerBarrelCollection_HTF"],
-    "TrackerHitOutputRelations": ["IBTrackerHitsRelations"+labelTrkDigiCollection],
+    "TrackerHitOutputRelations": ["ITBarrelHitsRelations"+labelTrkDigiCollection],
     "TimeLowerLimit": ["-0.18"],
     "TimeUpperLimit": ["0.3"],
     "FillHistograms": ["true"]
@@ -911,12 +911,12 @@ HitTimeFilter_ITE = MarlinProcessorWrapper("HitTimeFilter_ITE")
 HitTimeFilter_ITE.OutputLevel = INFO
 HitTimeFilter_ITE.ProcessorType = "FilterTimeHits"
 HitTimeFilter_ITE.Parameters = {
-    "TrackerHitInputCollections": ["IETrackerHits_realDigi"],
+    "TrackerHitInputCollections": ["ITEndcapHits_realDigi"],
     "TrackerSimHitInputCollections": ["InnerTrackerEndcapCollection"],
-    "TrackerHitInputRelations": ["IETrackerHitsRelations_realDigi"],
-    "TrackerHitOutputCollections": ["IETrackerHits"+labelTrkDigiCollection],
+    "TrackerHitInputRelations": ["ITEndcapHitsRelations_realDigi"],
+    "TrackerHitOutputCollections": ["ITEndcapHits"+labelTrkDigiCollection],
     "TrackerSimHitOutputCollections": ["InnerTrackerEndcapCollection_HTF"],
-    "TrackerHitOutputRelations": ["IETrackerHitsRelations"+labelTrkDigiCollection],
+    "TrackerHitOutputRelations": ["ITEndcapHitsRelations"+labelTrkDigiCollection],
     "TimeLowerLimit": ["-0.18"],
     "TimeUpperLimit": ["0.3"],
     "FillHistograms": ["true"]
@@ -927,12 +927,12 @@ HitTimeFilter_OTB = MarlinProcessorWrapper("HitTimeFilter_OTB")
 HitTimeFilter_OTB.OutputLevel = INFO
 HitTimeFilter_OTB.ProcessorType = "FilterTimeHits"
 HitTimeFilter_OTB.Parameters = {
-    "TrackerHitInputCollections": ["OBTrackerHits_realDigi"],
+    "TrackerHitInputCollections": ["OTBarrelHits_realDigi"],
     "TrackerSimHitInputCollections": ["OuterTrackerBarrelCollection"],
-    "TrackerHitInputRelations": ["OBTrackerHitsRelations_realDigi"],
-    "TrackerHitOutputCollections": ["OBTrackerHits"+labelTrkDigiCollection],
+    "TrackerHitInputRelations": ["OTBarrelHitsRelations_realDigi"],
+    "TrackerHitOutputCollections": ["OTBarrelHits"+labelTrkDigiCollection],
     "TrackerSimHitOutputCollections": ["OuterTrackerBarrelCollection_HTF"],
-    "TrackerHitOutputRelations": ["OBTrackerHitsRelations"+labelTrkDigiCollection],
+    "TrackerHitOutputRelations": ["OTBarrelHitsRelations"+labelTrkDigiCollection],
     "TimeLowerLimit": ["-0.18"],
     "TimeUpperLimit": ["0.3"],
     "FillHistograms": ["true"]
@@ -942,12 +942,12 @@ HitTimeFilter_OTE = MarlinProcessorWrapper("HitTimeFilter_OTE")
 HitTimeFilter_OTE.OutputLevel = INFO
 HitTimeFilter_OTE.ProcessorType = "FilterTimeHits"
 HitTimeFilter_OTE.Parameters = {
-    "TrackerHitInputCollections": ["OETrackerHits_realDigi"],
+    "TrackerHitInputCollections": ["OTEndcapHits_realDigi"],
     "TrackerSimHitInputCollections": ["OuterTrackerEndcapCollection"],
-    "TrackerHitInputRelations": ["OETrackerHitsRelations_realDigi"],
-    "TrackerHitOutputCollections": ["OETrackerHits"+labelTrkDigiCollection],
+    "TrackerHitInputRelations": ["OTEndcapHitsRelations_realDigi"],
+    "TrackerHitOutputCollections": ["OTEndcapHits"+labelTrkDigiCollection],
     "TrackerSimHitOutputCollections": ["OuterTrackerEndcapCollection_HTF"],
-    "TrackerHitOutputRelations": ["OETrackerHitsRelations"+labelTrkDigiCollection],
+    "TrackerHitOutputRelations": ["OTEndcapHitsRelations"+labelTrkDigiCollection],
     "TimeLowerLimit": ["-0.18"],
     "TimeUpperLimit": ["0.3"],
     "FillHistograms": ["true"]
@@ -963,8 +963,8 @@ if the_args.doOverlayIP:
 
 if (the_args.doTrkDigiSimple):
     # check that filters needing full digi are not enabled
-    if not the_args.doClusterFilter:
-        print("Cluster filter only to be applied only on realistic digitization. Please re-run without the option --doTrkDigiSimple.")
+    if the_args.doClusterFilter:
+        print("Cluster filter only to be applied only on realistic digitization. Please re-run without the option --doClusterFilter.")
         exit()
 
     # schedule simplified digitization processors
