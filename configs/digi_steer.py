@@ -132,8 +132,8 @@ LCIOWriter_light = MarlinProcessorWrapper("LCIOWriter_light")
 LCIOWriter_light.OutputLevel = INFO
 LCIOWriter_light.ProcessorType = "LCIOOutputProcessor"
 LCIOWriter_light.Parameters = {
-                               "DropCollectionNames": ["MCParticle","VBTrackerHits_realDigi", "VETrackerHits_realDigi", "IBTrackerHits_realDigi", "IETrackerHits_realDigi", "OBTrackerHits_realDigi"],
-                               "DropCollectionTypes": ["SimTrackerHit", "SimCalorimeterHit", "LCRelation"],
+                               "DropCollectionNames": ["VXDBarrelHits_realDigi", "VXDEndcapHits_realDigi"],# "ITBarrelHits_realDigi", "ITEndcapHits_realDigi", "OTBarrelHits_realDigi", "OTEndcapHits_realDigi"],
+                               "DropCollectionTypes": ["SimTrackerHit", "SimCalorimeterHit"],
                                "FullSubsetCollections": [],
                                "KeepCollectionNames": [],
                                "LCIOOutputFile": ["output_digi_light.slcio"],
@@ -988,9 +988,10 @@ else:
     # schedule time-based cluster filters
     algList.append(HitTimeFilter_VXB)
     algList.append(HitTimeFilter_VXE)
-    algList.append(HitTimeFilter_ITB)
-    algList.append(HitTimeFilter_ITE)
-#    algList.append(HitTimeFilter_OTB)    
+    #algList.append(HitTimeFilter_ITB)
+    #algList.append(HitTimeFilter_ITE)
+    #algList.append(HitTimeFilter_OTB)    
+    #algList.append(HitTimeFilter_OTE)
     
     if the_args.doClusterFilter:
         # schedule shape-based cluster filters
@@ -1023,7 +1024,7 @@ if the_args.writeAll:
     algList.append(LCIOWriter_all)
 else:
     if the_args.doClusterFilter:
-        LCIOWriter_light.Parameters["DropCollectionNames"]=["MCParticle", "VBTrackerHits_HTF", "IBTrackerHits_HTF", "OBTrackerHits_HTF", "VBTrackerHits_realDigi", "VETrackerHits_realDigi", "IBTrackerHits_realDigi", "IETrackerHits_realDigi", "OBTrackerHits_realDigi"]
+        LCIOWriter_light.Parameters["DropCollectionNames"]=["VXDBarrelHits_HTF", "VXDEndcapHits_HTF", "ITBarrelHits_HTF", "ITEndcapHits_HTF", "OTBarrelHits_HTF", "OTEndcapHits_HTF", "VXDBarrelHits_realDigi", "VXDEndcapHits_realDigi", "ITBarrelHits_realDigi", "ITEndcapHits_realDigi", "OTBarrelHits_realDigi", "OTEndcapHits_realDigi", "VertexBarrelCollection_HTF", "VertexEndcapCollection_HTF", "InnerTrackerBarrelCollection_HTF", "InnerTrackerEndcapCollection_HTF", "OuterTrackerBarrelCollection_HTF", "OuterTrackerEndcapCollection_HTF"]
     algList.append(LCIOWriter_light)
 
 from Configurables import ApplicationMgr
