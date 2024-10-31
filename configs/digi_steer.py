@@ -132,7 +132,7 @@ LCIOWriter_light = MarlinProcessorWrapper("LCIOWriter_light")
 LCIOWriter_light.OutputLevel = INFO
 LCIOWriter_light.ProcessorType = "LCIOOutputProcessor"
 LCIOWriter_light.Parameters = {
-                               "DropCollectionNames": ["VXDBarrelHits_realDigi", "VXDEndcapHits_realDigi"],# "ITBarrelHits_realDigi", "ITEndcapHits_realDigi", "OTBarrelHits_realDigi", "OTEndcapHits_realDigi"],
+                               "DropCollectionNames": ["VXDBarrelHits_realDigi", "VXDEndcapHits_realDigi", "ITBarrelHits_realDigi", "ITEndcapHits_realDigi", "OTBarrelHits_realDigi", "OTEndcapHits_realDigi"],
                                "DropCollectionTypes": ["SimTrackerHit", "SimCalorimeterHit"],
                                "FullSubsetCollections": [],
                                "KeepCollectionNames": [],
@@ -856,6 +856,7 @@ ClusterFilter_OBLoose.Parameters = {
     "FillHistograms": ["true"]
 }
 
+labelTrkDigiCollection=""
 if (not the_args.doTrkDigiSimple):
     if (not the_args.doClusterFilter):
         labelTrkDigiCollection=""
@@ -981,25 +982,23 @@ else:
     algList.append(VXDEndcapRealisticDigi)
     algList.append(InnerPlanarRealisticDigi)
     algList.append(InnerEndcapRealisticDigi)
-#    algList.append(OuterPlanarRealisticDigi)
-    algList.append(OTBarrelDigitiser)
+    algList.append(OuterPlanarRealisticDigi)
     algList.append(OTEndcapDigitiser)
 
     # schedule time-based cluster filters
     algList.append(HitTimeFilter_VXB)
     algList.append(HitTimeFilter_VXE)
-    #algList.append(HitTimeFilter_ITB)
-    #algList.append(HitTimeFilter_ITE)
-    #algList.append(HitTimeFilter_OTB)    
-    #algList.append(HitTimeFilter_OTE)
+    algList.append(HitTimeFilter_ITB)
+    algList.append(HitTimeFilter_ITE)
+    algList.append(HitTimeFilter_OTB)    
     
     if the_args.doClusterFilter:
         # schedule shape-based cluster filters
         algList.append(ClusterFilter_VBLoose)
         algList.append(ClusterFilter_VELoose)
-#        algList.append(ClusterFilter_IBLoose)
-#        algList.append(ClusterFilter_IELoose)
-#        algList.append(ClusterFilter_OBLoose)           
+        algList.append(ClusterFilter_IBLoose)
+        algList.append(ClusterFilter_IELoose)
+        algList.append(ClusterFilter_OBLoose)           
 
 if the_args.doFilterDL:    
     algList.append(FilterDL_VXDB)
