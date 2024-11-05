@@ -7,3 +7,6 @@
 [submodule "packages/MarlinTrkProcessors"]
 	path = packages/MarlinTrkProcessors
 	url = git@github.com:spg-berkeleylab/MarlinTrkProcessors.git
+[submodule "packages/lcgeo"]
+	path = packages/lcgeo
+	url = git@github.com:MuonColliderSoft/lcgeo.git
