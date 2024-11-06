@@ -120,7 +120,7 @@ LCIOWriter_all = MarlinProcessorWrapper("LCIOWriter_all")
 LCIOWriter_all.OutputLevel = INFO
 LCIOWriter_all.ProcessorType = "LCIOOutputProcessor"
 LCIOWriter_all.Parameters = {
-                             "DropCollectionNames": [],
+                             "DropCollectionNames": ["VXDBarrelHits_realDigi", "VXDEndcapHits_realDigi", "ITBarrelHits_realDigi", "ITEndcapHits_realDigi", "OTBarrelHits_realDigi", "VBPixels", "VEPixels", "IBPixels", "IEPixels", "OBPixels", "OEPixels", "VXDBarrelHitsRelations_realDigi", "VXDEndcapHitsRelations_realDigi", "ITBarrelHitsRelations_realDigi", "ITEndcapHitsRelations_realDigi", "OTBarrelHitsRelations_realDigi", "VertexBarrelCollection", "VertexEndcapCollection", "InnerTrackerBarrelCollection", "InnerTrackerEndcapCollection", "OuterTrackerBarrelCollection"],
                              "DropCollectionTypes": [],
                              "FullSubsetCollections": [],
                              "KeepCollectionNames": [],
@@ -132,8 +132,8 @@ LCIOWriter_light = MarlinProcessorWrapper("LCIOWriter_light")
 LCIOWriter_light.OutputLevel = INFO
 LCIOWriter_light.ProcessorType = "LCIOOutputProcessor"
 LCIOWriter_light.Parameters = {
-                               "DropCollectionNames": ["VXDBarrelHits_realDigi", "VXDEndcapHits_realDigi", "ITBarrelHits_realDigi", "ITEndcapHits_realDigi", "OTBarrelHits_realDigi", "OTEndcapHits_realDigi"],
-                               "DropCollectionTypes": ["SimTrackerHit", "SimCalorimeterHit"],
+                               "DropCollectionNames": ["VXDBarrelHits_realDigi", "VXDEndcapHits_realDigi", "ITBarrelHits_realDigi", "ITEndcapHits_realDigi", "OTBarrelHits_realDigi"],
+                               "DropCollectionTypes": ["SimTrackerHit", "SimCalorimeterHit", "LCRelation", "MCParticle"],
                                "FullSubsetCollections": [],
                                "KeepCollectionNames": [],
                                "LCIOOutputFile": ["output_digi_light.slcio"],
@@ -872,9 +872,9 @@ HitTimeFilter_VXB.Parameters = {
     "TrackerSimHitInputCollections": ["VertexBarrelCollection"],
     "TrackerHitInputRelations": ["VXDBarrelHitsRelations_realDigi"],
     "TrackerHitOutputCollections": ["VXDBarrelHits"+labelTrkDigiCollection],
-    "TrackerHitConstituentsOutputCollections": ["VBPixels"+labelTrkDigiCollection],
-    "TrackerSimHitOutputCollections": ["VertexBarrelCollection"+labelTrkDigiCollection],
-    "TrackerHitOutputRelations": ["VXDBarrelHitsRelations"+labelTrkDigiCollection],
+    "TrackerHitConstituentsOutputCollections": ["VBPixels_HTF"],
+    "TrackerSimHitOutputCollections": ["VertexBarrelCollection_HTF"],
+    "TrackerHitOutputRelations": ["VXDBarrelHitsRelations_HTF"],
     "TimeLowerLimit": ["-0.09"],
     "TimeUpperLimit": ["0.15"],
     "FillHistograms": ["true"]
@@ -889,9 +889,9 @@ HitTimeFilter_VXE.Parameters = {
     "TrackerSimHitInputCollections": ["VertexEndcapCollection"],
     "TrackerHitInputRelations": ["VXDEndcapHitsRelations_realDigi"],
     "TrackerHitOutputCollections": ["VXDEndcapHits"+labelTrkDigiCollection],
-    "TrackerHitConstituentsOutputCollections": ["VEPixels"+labelTrkDigiCollection],
-    "TrackerSimHitOutputCollections": ["VertexEndcapCollection"+labelTrkDigiCollection],
-    "TrackerHitOutputRelations": ["VXDEndcapHitsRelations"+labelTrkDigiCollection],
+    "TrackerHitConstituentsOutputCollections": ["VEPixels_HTF"],
+    "TrackerSimHitOutputCollections": ["VertexEndcapCollection_HTF"],
+    "TrackerHitOutputRelations": ["VXDEndcapHitsRelations_HTF"],
     "TimeLowerLimit": ["-0.09"],
     "TimeUpperLimit": ["0.15"],
     "FillHistograms": ["true"]
@@ -906,9 +906,9 @@ HitTimeFilter_ITB.Parameters = {
     "TrackerSimHitInputCollections": ["InnerTrackerBarrelCollection"],
     "TrackerHitInputRelations": ["ITBarrelHitsRelations_realDigi"],
     "TrackerHitOutputCollections": ["ITBarrelHits"+labelTrkDigiCollection],
-    "TrackerHitConstituentsOutputCollections": ["IBPixels"+labelTrkDigiCollection],
-    "TrackerSimHitOutputCollections": ["InnerTrackerBarrelCollection"+labelTrkDigiCollection],
-    "TrackerHitOutputRelations": ["ITBarrelHitsRelations"+labelTrkDigiCollection],
+    "TrackerHitConstituentsOutputCollections": ["IBPixels_HTF"],
+    "TrackerSimHitOutputCollections": ["InnerTrackerBarrelCollection_HTF"],
+    "TrackerHitOutputRelations": ["ITBarrelHitsRelations_HTF"],
     "TimeLowerLimit": ["-0.18"],
     "TimeUpperLimit": ["0.3"],
     "FillHistograms": ["true"]
@@ -923,9 +923,9 @@ HitTimeFilter_ITE.Parameters = {
     "TrackerSimHitInputCollections": ["InnerTrackerEndcapCollection"],
     "TrackerHitInputRelations": ["ITEndcapHitsRelations_realDigi"],
     "TrackerHitOutputCollections": ["ITEndcapHits"+labelTrkDigiCollection],
-    "TrackerHitConstituentsOutputCollections": ["IEPixels"+labelTrkDigiCollection],
-    "TrackerSimHitOutputCollections": ["InnerTrackerEndcapCollection"+labelTrkDigiCollection],
-    "TrackerHitOutputRelations": ["ITEndcapHitsRelations"+labelTrkDigiCollection],
+    "TrackerHitConstituentsOutputCollections": ["IEPixels_HTF"],
+    "TrackerSimHitOutputCollections": ["InnerTrackerEndcapCollection_HTF"],
+    "TrackerHitOutputRelations": ["ITEndcapHitsRelations_HTF"],
     "TimeLowerLimit": ["-0.18"],
     "TimeUpperLimit": ["0.3"],
     "FillHistograms": ["true"]
@@ -941,9 +941,9 @@ HitTimeFilter_OTB.Parameters = {
     "TrackerSimHitInputCollections": ["OuterTrackerBarrelCollection"],
     "TrackerHitInputRelations": ["OTBarrelHitsRelations_realDigi"],
     "TrackerHitOutputCollections": ["OTBarrelHits"+labelTrkDigiCollection],
-    "TrackerHitConstituentsOutputCollections": ["OBPixels"+labelTrkDigiCollection],
-    "TrackerSimHitOutputCollections": ["OuterTrackerBarrelCollection"+labelTrkDigiCollection],
-    "TrackerHitOutputRelations": ["OTBarrelHitsRelations"+labelTrkDigiCollection],
+    "TrackerHitConstituentsOutputCollections": ["OBPixels_HTF"],
+    "TrackerSimHitOutputCollections": ["OuterTrackerBarrelCollection_HTF"],
+    "TrackerHitOutputRelations": ["OTBarrelHitsRelations_HTF"],
     "TimeLowerLimit": ["-0.18"],
     "TimeUpperLimit": ["0.3"],
     "FillHistograms": ["true"]
@@ -958,9 +958,9 @@ HitTimeFilter_OTE.Parameters = {
     "TrackerSimHitInputCollections": ["OuterTrackerEndcapCollection"],
     "TrackerHitInputRelations": ["OTEndcapHitsRelations_realDigi"],
     "TrackerHitOutputCollections": ["OTEndcapHits"+labelTrkDigiCollection],
-    "TrackerHitConstituentsOutputCollections": ["OEPixels"+labelTrkDigiCollection],
-    "TrackerSimHitOutputCollections": ["OuterTrackerEndcapCollection"+labelTrkDigiCollection],
-    "TrackerHitOutputRelations": ["OTEndcapHitsRelations"+labelTrkDigiCollection],
+    "TrackerHitConstituentsOutputCollections": ["OEPixels_HTF"],
+    "TrackerSimHitOutputCollections": ["OuterTrackerEndcapCollection_HTF"],
+    "TrackerHitOutputRelations": ["OTEndcapHitsRelations_HTF"],
     "TimeLowerLimit": ["-0.18"],
     "TimeUpperLimit": ["0.3"],
     "FillHistograms": ["true"]
@@ -1035,7 +1035,8 @@ if the_args.writeAll:
     algList.append(LCIOWriter_all)
 else:
     if the_args.doClusterFilter:
-        LCIOWriter_light.Parameters["DropCollectionNames"]=["VXDBarrelHits_HTF", "VXDEndcapHits_HTF", "ITBarrelHits_HTF", "ITEndcapHits_HTF", "OTBarrelHits_HTF", "OTEndcapHits_HTF", "VXDBarrelHits_realDigi", "VXDEndcapHits_realDigi", "ITBarrelHits_realDigi", "ITEndcapHits_realDigi", "OTBarrelHits_realDigi", "OTEndcapHits_realDigi", "VertexBarrelCollection_HTF", "VertexEndcapCollection_HTF", "InnerTrackerBarrelCollection_HTF", "InnerTrackerEndcapCollection_HTF", "OuterTrackerBarrelCollection_HTF", "OuterTrackerEndcapCollection_HTF"]
+        LCIOWriter_light.Parameters["DropCollectionNames"]=["VXDBarrelHits_HTF", "VXDEndcapHits_HTF", "ITBarrelHits_HTF", "ITEndcapHits_HTF", "OTBarrelHits_HTF", "VXDBarrelHits_realDigi", "VXDEndcapHits_realDigi", "ITBarrelHits_realDigi", "ITEndcapHits_realDigi", "OTBarrelHits_realDigi"]
+
     algList.append(LCIOWriter_light)
 
 from Configurables import ApplicationMgr
