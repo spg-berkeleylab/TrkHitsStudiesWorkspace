@@ -1036,6 +1036,9 @@ if the_args.writeAll:
 else:
     if the_args.doClusterFilter:
         LCIOWriter_light.Parameters["DropCollectionNames"]=["VXDBarrelHits_HTF", "VXDEndcapHits_HTF", "ITBarrelHits_HTF", "ITEndcapHits_HTF", "OTBarrelHits_HTF", "VXDBarrelHits_realDigi", "VXDEndcapHits_realDigi", "ITBarrelHits_realDigi", "ITEndcapHits_realDigi", "OTBarrelHits_realDigi"]
+    if not the_args.doClusterFilter:
+        LCIOWriter_light.Parameters["KeepCollectionNames"]=["VXDBarrelHits", "VXDEndcapHits", "ITBarrelHits", "ITEndcapHits", "OTBarrelHits", "OTEndcapHits", "VXDBarrelHitsRelations_HTF", "VXDEndcapHitsRelations_HTF", "ITBarrelHitsRelations_HTF", "ITEndcapHitsRelations_HTF", "OTBarrelHitsRelations_HTF", "OTEndcapHitsRelations", "VBPixels_HTF", "VEPixels_HTF", "IBPixels_HTF", "IEPixels_HTF", "OBPixels_HTF", "VertexBarrelCollection_HTF", "VertexEndcapCollection_HTF", "InnerTrackerBarrelCollection_HTF", "InnerTrackerEndcapCollection_HTF", "OuterTrackerBarrelCollection_HTF", "OuterTrackerEndcapCollection"]
+        LCIOWriter_light.Parameters["DropCollectionTypes"]=["SimTrackerHit", "SimCalorimeterHit", "LCRelation", "TrackerHitPlane", "CalorimeterHit"]
 
     algList.append(LCIOWriter_light)
 
