@@ -3,6 +3,16 @@ import os
 
 from Configurables import LcioEvent, EventDataSvc, MarlinProcessorWrapper
 from k4MarlinWrapper.parseConstants import *
+from k4FWCore.parseArgs import parser
+
+parser.add_argument(
+    "--doTrkDigiSimple",
+    help="Only use collections of simplified tracker digitization",
+    action="store_true",
+    default=False,
+)
+the_args = parser.parse_known_args()[0]
+
 algList = []
 evtsvc = EventDataSvc()
 
@@ -88,6 +98,14 @@ algList.append(MyAIDAProcessor)
 algList.append(EventNumber)
 algList.append(Config)
 algList.append(InitDD4hep)
+
+if (the_args.doTrkDigiSimple):
+    MyClusterShapeAnalysis.Parameters["IBRelationCollection"]=["ITBarrelHitsRelations"]
+    MyClusterShapeAnalysis.Parameters["IERelationCollection"]=["ITEndcapHitsRelations"]
+    MyClusterShapeAnalysis.Parameters["OBRelationCollection"]=["OTBarrelHitsRelations"]
+    MyClusterShapeAnalysis.Parameters["VBRelationCollection"]=["VXDBarrelHitsRelations"]
+    MyClusterShapeAnalysis.Parameters["VERelationCollection"]=["VXDEndcapHitsRelations"]
+
 algList.append(MyClusterShapeAnalysis)
 
 from Configurables import ApplicationMgr
