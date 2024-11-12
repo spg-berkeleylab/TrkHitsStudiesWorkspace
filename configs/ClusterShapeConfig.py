@@ -3,6 +3,16 @@ import os
 
 from Configurables import LcioEvent, EventDataSvc, MarlinProcessorWrapper
 from k4MarlinWrapper.parseConstants import *
+from k4FWCore.parseArgs import parser
+
+parser.add_argument(
+    "--doTrkDigiSimple",
+    help="Only use collections of simplified tracker digitization",
+    action="store_true",
+    default=False,
+)
+the_args = parser.parse_known_args()[0]
+
 algList = []
 evtsvc = EventDataSvc()
 
@@ -60,34 +70,42 @@ MyTrackTruth.Parameters = {
                            "MCParticleCollection": ["MCParticle"],
                            "Particle2TrackRelationName": ["MCParticle_SiTracks"],
                            "TrackCollection": ["SiTracks"],
-                           "TrackerHit2SimTrackerHitRelationName": ["VBTrackerHitsRelations", "IBTrackerHitsRelations", "OBTrackerHitsRelations", "VETrackerHitsRelations", "IETrackerHitsRelations", "OETrackerHitsRelations"]
+                           "TrackerHit2SimTrackerHitRelationName": ["VXDBarrelHitsRelations", "ITBarrelHitsRelations", "OTBarrelHitsRelations", "VXDEndcapHitsRelations", "ITEndcapHitsRelations", "OTEndcapHitsRelations"]
                            }
 
 MyClusterShapeAnalysis = MarlinProcessorWrapper("MyClusterShapeAnalysis")
 MyClusterShapeAnalysis.OutputLevel = WARNING
 MyClusterShapeAnalysis.ProcessorType = "ClusterShapeHistProc"
 MyClusterShapeAnalysis.Parameters = {
-                                     "IBRelationCollection": ["IBTrackerHitsRelations"],
-                                     "IBTrackerHitsCollection": ["IBTrackerHits"],
-                                     "IERelationCollection": ["IETrackerHitsRelations"],
-                                     "IETrackerHitsCollection": ["IETrackerHits"],
+                                     "IBRelationCollection": ["ITBarrelHitsRelations_HTF"],
+                                     "IBTrackerHitsCollection": ["ITBarrelHits"],
+                                     "IERelationCollection": ["ITEndcapHitsRelations_HTF"],
+                                     "IETrackerHitsCollection": ["ITEndcapHits"],
                                      "MCParticleCollection": ["MCParticle"],
                                      "MCTrackRelationCollection": ["MCParticle_SiTracks"],
-                                     "OBRelationCollection": ["OBTrackerHitsRelations"],
-                                     "OBTrackerHitsCollection": ["OBTrackerHits"],
+                                     "OBRelationCollection": ["OTBarrelHitsRelations_HTF"],
+                                     "OBTrackerHitsCollection": ["OTBarrelHits"],
                                      "OERelationCollection": ["OTEndcapHitsRelations"],
-                                     "OETrackerHitsCollection": ["OTEndcapHits"],
+                                     "OTEndcapHitsCollection": ["OTEndcapHits"],
                                      "TrackCollection": ["SiTracks"],
-                                     "VBRelationCollection": ["VBTrackerHitsRelations"],
-                                     "VBTrackerHitsCollection": ["VBTrackerHits"],
-                                     "VERelationCollection": ["VETrackerHitsRelations"],
-                                     "VETrackerHitsCollection": ["VETrackerHits"]
+                                     "VBRelationCollection": ["VXDBarrelHitsRelations_HTF"],
+                                     "VBTrackerHitsCollection": ["VXDBarrelHits"],
+                                     "VERelationCollection": ["VXDEndcapHitsRelations_HTF"],
+                                     "VETrackerHitsCollection": ["VXDEndcapHits"]
                                      }
 
 algList.append(MyAIDAProcessor)
 algList.append(EventNumber)
 algList.append(Config)
 algList.append(InitDD4hep)
+
+if (the_args.doTrkDigiSimple):
+    MyClusterShapeAnalysis.Parameters["IBRelationCollection"]=["ITBarrelHitsRelations"]
+    MyClusterShapeAnalysis.Parameters["IERelationCollection"]=["ITEndcapHitsRelations"]
+    MyClusterShapeAnalysis.Parameters["OBRelationCollection"]=["OTBarrelHitsRelations"]
+    MyClusterShapeAnalysis.Parameters["VBRelationCollection"]=["VXDBarrelHitsRelations"]
+    MyClusterShapeAnalysis.Parameters["VERelationCollection"]=["VXDEndcapHitsRelations"]
+
 algList.append(MyClusterShapeAnalysis)
 
 from Configurables import ApplicationMgr

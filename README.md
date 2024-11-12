@@ -1,6 +1,6 @@
-# TrackPerf Workspace
+# Tracking Clusters Studies Workspace
 
-Collection of packages for testing tracking performance in a muon collider.
+Collection of packages for testing inner sillicon tracking digitization performance in a muon collider.
 
 ## Repository Structure
 - `exts/` External packages not included with the Muon Collider framework.
@@ -9,18 +9,18 @@ Collection of packages for testing tracking performance in a muon collider.
 ## Setup Instructions
 
 ### Container
-All commands should be run inside the `gitlab-registry.cern.ch/muon-collider/mucoll-deploy/mucoll:2.8-patch2-el9` image.
+All commands should be run inside the `docker:gitlab-registry.cern.ch/muon-collider/mucoll-deploy/mucoll:2.9-alma9` image.
 
 #### Singularity
 
 ```bash
-apptainer shell --cleanenv -B/disk/moose docker://gitlab-registry.cern.ch/muon-collider/mucoll-deploy/mucoll:2.8-patch2-el9
+apptainer shell --cleanenv -B/disk/moose docker:gitlab-registry.cern.ch/muon-collider/mucoll-deploy/mucoll:2.9-alma9
 ```
 
 #### Shifter
 
 ```bash
-shifter --image gitlab-registry.cern.ch/muon-collider/mucoll-deploy/mucoll:2.8-patch2-el9 /bin/bash
+shifter --image gitlab-registry.cern.ch/muon-collider/mucoll-deploy/mucoll:2.9-alma9 /bin/bash
 ```
 
 ### Build Instructions
@@ -45,6 +45,20 @@ Run the following at the start of every session. It has an optional argument to 
 ```bash
 source setup.sh [build]
 ```
+
+## Geometry information
+A quick note for the MusicV2 and MAIA 10 TeV geometries.
+* MusicV2; I indicated below which packages you should add to the workspace if the version in the container is too old.
+    * Geometry is stored in the main branch of the lcgeo package (clone locally; branch master): `https://github.com/MuonColliderSoft/lcgeo/tree/master/MuColl/MuSIC_v2`
+    * Material Map and TGeo models are now in the master branch of ACTSTracking (clone locally; branch main): `https://github.com/MuonColliderSoft/ACTSTracking/tree/main/data`
+    * BIB files with this geometry are now on perlmutter here: `/global/cfs/cdirs/atlas/spgriso/MuonCollider/data/bib/10TeV-2024/MusicV2/trimmed` and then two sub-folders: `MuMinus` and `MuPlus`
+    * For BIB, in the `OverlayMIX` processor set `NumberOfBackgrounds` to `6`
+    * Incoherent pair production is on plermutter here: `/global/cfs/cdirs/atlas/spgriso/MuonCollider/data/bib/10TeV-2024/MusicV2/trimmed/MuPairs`
+* MAIA; clone locally the repository `https://github.com/madbaron/detector-simulation/`
+    * Geometry files are in this folder: `https://github.com/madbaron/detector-simulation/tree/KITP_10TeV/geometries/MAIA_v0`
+    * Material Map: `/global/cfs/cdirs/atlas/spgriso/MuonCollider/data/bib/10TeV-2024/MAIA/ACTSmaps/`
+    * BIB files with this geometry on perlmutter: `/global/cfs/cdirs/atlas/spgriso/MuonCollider/data/bib/10TeV-2024/MAIA`
+    * For BIB, in the `OverlayMIX` processor set `NumberOfBackgrounds` to `1666`
 
 ## Example Commands
 
