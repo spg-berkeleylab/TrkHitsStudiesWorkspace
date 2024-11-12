@@ -777,7 +777,7 @@ ClusterFilter_VBLoose.ProcessorType = "FilterClusters"
 ClusterFilter_VBLoose.Parameters = {
     "ThetaRanges": ["0","0.7","1.0","2.0","2.3","3.2","0","0.7","1.0","2.0","2.3","3.2","0","0.7","1.0","2.0","2.3","3.2","0","0.7","1.0","2.0","2.3","3.2","0","0.7","1.0","2.0","2.3","3.2","0","0.7","1.0","2.0","2.3","3.2","0","0.7","1.0","2.0","2.3","3.2","0","0.7","1.0","2.0","2.3","3.2"],
     "ClusterSize": ["6","5","4","5","6","7","6","5","6","7","5","5","4","5","5","5","5","4","5","5","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4","4"],
-    "ThetaBins": ["6"],
+    "ThetaBins": ["5"],
     "Layers": ["0","1","2","3","4","5","6","7"],
     "InTrackerHitCollection": ["VXDBarrelHits_HTF"],
     "InRelationCollection": ["VXDBarrelHitsRelations_HTF"],
@@ -794,7 +794,7 @@ ClusterFilter_VELoose.ProcessorType = "FilterClusters"
 ClusterFilter_VELoose.Parameters = {
     "ThetaRanges": ["0","0.7","1.0","2.0","2.3","3.2","0","0.7","1.0","2.0","2.3","3.2","0","0.7","1.0","2.0","2.3","3.2","0","0.7","1.0","2.0","2.3","3.2","0","0.7","1.0","2.0","2.3","3.2","0","0.7","1.0","2.0","2.3","3.2","0","0.7","1.0","2.0","2.3","3.2","0","0.7","1.0","2.0","2.3","3.2"],
     "ClusterSize": ["4","5","0","5","4","4","5","0","5","4","4","5","0","5","4","4","5","0","5","4","4","0","0","0","4","4","0","0","0","4","4","0","0","0","4","4","0","0","0","4"],
-    "ThetaBins": ["6"],
+    "ThetaBins": ["5"],
     "Layers": ["0","1","2","3","4","5","6","7"],
     "InTrackerHitCollection": ["VXDEndcapHits_HTF"],
     "InRelationCollection": ["VXDEndcapHitsRelations_HTF"],
@@ -811,7 +811,7 @@ ClusterFilter_IBLoose.ProcessorType = "FilterClusters"
 ClusterFilter_IBLoose.Parameters = {
     "ThetaRanges": ["0","0.7","1.0","2.0","2.3","3.2","0","0.7","1.0","2.0","2.3","3.2","0","0.7","1.0","2.0","2.3","3.2"],
     "ClusterSize": ["4","4","3","4","4","3","3","3","3","3","3","3","3","3","3"],
-    "ThetaBins": ["6"],
+    "ThetaBins": ["5"],
     "Layers": ["0","1","2"],
     "InTrackerHitCollection": ["ITBarrelHits_HTF"],
     "InRelationCollection": ["ITBarrelHitsRelations_HTF"],
@@ -828,7 +828,7 @@ ClusterFilter_IELoose.ProcessorType = "FilterClusters"
 ClusterFilter_IELoose.Parameters = {
     "ThetaRanges": ["0","0.7","2.3","3.2","0","0.7","2.3","3.2","0","0.7","2.3","3.2"],
     "ClusterSize": ["3","0","3","3","0","3","3","0","3"],
-    "ThetaBins": ["4"],
+    "ThetaBins": ["3"],
     "Layers": ["0","1","2"],
     "InTrackerHitCollection": ["ITEndcapHits_HTF"],
     "InSimTrackerHitCollection": ["InnerTrackerEndcapCollection_HTF"],
@@ -845,7 +845,7 @@ ClusterFilter_OBLoose.ProcessorType = "FilterClusters"
 ClusterFilter_OBLoose.Parameters = {
     "ThetaRanges": ["0","0.7","1.05","2.1","2.5","3.2","0","0.7","1.05","2.1","2.5","3.2","0","0.7","1.05","2.1","2.5","3.2"],
     "ClusterSize": ["3","3","3","3","3","3","3","3","3","3","3","3","3","3","3"],
-    "ThetaBins": ["6"],
+    "ThetaBins": ["5"],
     "Layers": ["0","1","2"],
     "InTrackerHitCollection": ["OTBarrelHits_HTF"],
     "InRelationCollection": ["OTBarrelHitsRelations_HTF"],
