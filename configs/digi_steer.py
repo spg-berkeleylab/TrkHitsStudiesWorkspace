@@ -856,6 +856,24 @@ ClusterFilter_OBLoose.Parameters = {
     "FillHistograms": ["true"]
 }
 
+ClusterFilter_OELoose = MarlinProcessorWrapper("ClusterFilter_OELoose")
+ClusterFilter_OELoose.OutputLevel = INFO
+ClusterFilter_OELoose.ProcessorType = "FilterClusters"
+ClusterFilter_OELoose.Parameters = {
+    "ThetaRanges": ["0","0.7","2.3","3.2","0","0.7","2.3","3.2","0","0.7","2.3","3.2"],
+    "ClusterSize": ["3","0","3","3","0","3","3","0","3"],
+    "ThetaBins": ["3"],
+    "Layers": ["0","1","2"],
+    "InTrackerHitCollection": ["OTEndcapHits_HTF"],
+    "InSimTrackerHitCollection": ["OuterTrackerEndcapCollection_HTF"],
+    "InRelationCollection": ["OTEndcapHitsRelations_HTF"],
+    "OutTrackerHitCollection": ["OTEndcapHits"],
+    "OutRelationCollection": ["OTEndcapHitsRelations"],
+    "OutSimTrackerHitCollection": ["OuterTrackerEndcapCollection_CF"],
+    "FillHistograms": ["true"]
+}
+
+
 labelTrkDigiCollection=""
 if (not the_args.doTrkDigiSimple):
     if (not the_args.doClusterFilter):
@@ -995,7 +1013,7 @@ else:
     algList.append(InnerPlanarRealisticDigi)
     algList.append(InnerEndcapRealisticDigi)
     algList.append(OuterPlanarRealisticDigi)
-    algList.append(OTEndcapDigitiser)
+    algList.append(OuterEndcapRealisticDigi)
 
     # schedule time-based cluster filters
     algList.append(HitTimeFilter_VXB)
@@ -1003,6 +1021,7 @@ else:
     algList.append(HitTimeFilter_ITB)
     algList.append(HitTimeFilter_ITE)
     algList.append(HitTimeFilter_OTB)    
+    algList.append(HitTimeFilter_OTE)
     
     if the_args.doClusterFilter:
         # schedule shape-based cluster filters
@@ -1011,6 +1030,7 @@ else:
         algList.append(ClusterFilter_IBLoose)
         algList.append(ClusterFilter_IELoose)
         algList.append(ClusterFilter_OBLoose)           
+        algList.append(ClusterFilter_OELoose)
 
 if the_args.doFilterDL:    
     algList.append(FilterDL_VXDB)
