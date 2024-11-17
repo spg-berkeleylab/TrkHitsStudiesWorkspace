@@ -85,8 +85,8 @@ MyClusterShapeAnalysis.Parameters = {
                                      "MCTrackRelationCollection": ["MCParticle_SiTracks"],
                                      "OBRelationCollection": ["OTBarrelHitsRelations_HTF"],
                                      "OBTrackerHitsCollection": ["OTBarrelHits"],
-                                     "OERelationCollection": ["OTEndcapHitsRelations"],
-                                     "OTEndcapHitsCollection": ["OTEndcapHits"],
+                                     "OERelationCollection": ["OTEndcapHitsRelations_HTF"],
+                                     "OETrackerHitsCollection": ["OTEndcapHits"],
                                      "TrackCollection": ["SiTracks"],
                                      "VBRelationCollection": ["VXDBarrelHitsRelations_HTF"],
                                      "VBTrackerHitsCollection": ["VXDBarrelHits"],
@@ -103,6 +103,7 @@ if (the_args.doTrkDigiSimple):
     MyClusterShapeAnalysis.Parameters["IBRelationCollection"]=["ITBarrelHitsRelations"]
     MyClusterShapeAnalysis.Parameters["IERelationCollection"]=["ITEndcapHitsRelations"]
     MyClusterShapeAnalysis.Parameters["OBRelationCollection"]=["OTBarrelHitsRelations"]
+    MyClusterShapeAnalysis.Parameters["OERelationCollection"]=["OTEndcapHitsRelations"]
     MyClusterShapeAnalysis.Parameters["VBRelationCollection"]=["VXDBarrelHitsRelations"]
     MyClusterShapeAnalysis.Parameters["VERelationCollection"]=["VXDEndcapHitsRelations"]
 
