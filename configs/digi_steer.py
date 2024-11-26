@@ -120,7 +120,7 @@ LCIOWriter_all = MarlinProcessorWrapper("LCIOWriter_all")
 LCIOWriter_all.OutputLevel = INFO
 LCIOWriter_all.ProcessorType = "LCIOOutputProcessor"
 LCIOWriter_all.Parameters = {
-                             "DropCollectionNames": ["VXDBarrelHits_realDigi", "VXDEndcapHits_realDigi", "ITBarrelHits_realDigi", "ITEndcapHits_realDigi", "OTBarrelHits_realDigi", "VBPixels", "VEPixels", "IBPixels", "IEPixels", "OBPixels", "OEPixels", "VXDBarrelHitsRelations_realDigi", "VXDEndcapHitsRelations_realDigi", "ITBarrelHitsRelations_realDigi", "ITEndcapHitsRelations_realDigi", "OTBarrelHitsRelations_realDigi", "VertexBarrelCollection", "VertexEndcapCollection", "InnerTrackerBarrelCollection", "InnerTrackerEndcapCollection", "OuterTrackerBarrelCollection"],
+                             "DropCollectionNames": ["VBPixels", "VEPixels", "IBPixels", "IEPixels", "OBPixels", "OEPixels", "VXDBarrelHitsRelations_realDigi", "VXDEndcapHitsRelations_realDigi", "ITBarrelHitsRelations_realDigi", "ITEndcapHitsRelations_realDigi", "OTBarrelHitsRelations_realDigi", "OTEndcapHitsRelations_realDigi"],
                              "DropCollectionTypes": [],
                              "FullSubsetCollections": [],
                              "KeepCollectionNames": [],
@@ -133,7 +133,7 @@ LCIOWriter_light.OutputLevel = INFO
 LCIOWriter_light.ProcessorType = "LCIOOutputProcessor"
 LCIOWriter_light.Parameters = {
                                "DropCollectionNames": ["VXDBarrelHits_realDigi", "VXDEndcapHits_realDigi", "ITBarrelHits_realDigi", "ITEndcapHits_realDigi", "OTBarrelHits_realDigi"],
-                               "DropCollectionTypes": ["SimTrackerHit", "SimCalorimeterHit", "LCRelation", "MCParticle"],
+                               "DropCollectionTypes": ["SimTrackerHit", "SimCalorimeterHit", "LCRelation", "MCParticle", "TrackerHitPlane"],
                                "FullSubsetCollections": [],
                                "KeepCollectionNames": [],
                                "LCIOOutputFile": ["output_digi_light.slcio"],
@@ -1055,10 +1055,9 @@ if the_args.writeAll:
     algList.append(LCIOWriter_all)
 else:
     if the_args.doClusterFilter:
-        LCIOWriter_light.Parameters["DropCollectionNames"]=["VXDBarrelHits_HTF", "VXDEndcapHits_HTF", "ITBarrelHits_HTF", "ITEndcapHits_HTF", "OTBarrelHits_HTF",  "OTEndcapHits_HTF", "VXDBarrelHits_realDigi", "VXDEndcapHits_realDigi", "ITBarrelHits_realDigi", "ITEndcapHits_realDigi", "OTBarrelHits_realDigi", "OTEndcapHits_realDigi"]
+        LCIOWriter_light.Parameters["KeepCollectionNames"]=["VXDBarrelHits", "VXDEndcapHits", "ITBarrelHits", "ITEndcapHits", "OTBarrelHits", "OTEndcapHits", "VXDBarrelHitsRelations_CF", "VXDEndcapHitsRelations_CF", "ITBarrelHitsRelations_CF", "ITEndcapHitsRelations_CF", "OTBarrelHitsRelations_CF", "OTEndcapHitsRelations_CF", "VBPixels_HTF", "VEPixels_HTF", "IBPixels_HTF", "IEPixels_HTF", "OBPixels_HTF", "OEPixels_HTF"]
     if not the_args.doClusterFilter:
         LCIOWriter_light.Parameters["KeepCollectionNames"]=["VXDBarrelHits", "VXDEndcapHits", "ITBarrelHits", "ITEndcapHits", "OTBarrelHits", "OTEndcapHits", "VXDBarrelHitsRelations_HTF", "VXDEndcapHitsRelations_HTF", "ITBarrelHitsRelations_HTF", "ITEndcapHitsRelations_HTF", "OTBarrelHitsRelations_HTF", "OTEndcapHitsRelations_HTF", "VBPixels_HTF", "VEPixels_HTF", "IBPixels_HTF", "IEPixels_HTF", "OBPixels_HTF", "OEPixels_HTF"]
-        LCIOWriter_light.Parameters["DropCollectionTypes"]=["SimTrackerHit", "SimCalorimeterHit", "LCRelation", "TrackerHitPlane", "CalorimeterHit"]
         if the_args.doTrkDigiSimple:
             LCIOWriter_light.Parameters["KeepCollectionNames"]=["VXDBarrelHits", "VXDEndcapHits", "ITBarrelHits", "ITEndcapHits", "OTBarrelHits", "OTEndcapHits", "VXDBarrelHitsRelations", "VXDEndcapHitsRelations", "ITBarrelHitsRelations", "ITEndcapHitsRelations", "OTBarrelHitsRelations", "OTEndcapHitsRelations"]
 
