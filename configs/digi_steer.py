@@ -133,7 +133,7 @@ LCIOWriter_light.OutputLevel = INFO
 LCIOWriter_light.ProcessorType = "LCIOOutputProcessor"
 LCIOWriter_light.Parameters = {
                                "DropCollectionNames": ["VXDBarrelHits_realDigi", "VXDEndcapHits_realDigi", "ITBarrelHits_realDigi", "ITEndcapHits_realDigi", "OTBarrelHits_realDigi"],
-                               "DropCollectionTypes": ["SimTrackerHit", "SimCalorimeterHit", "LCRelation", "MCParticle", "TrackerHitPlane"],
+                               "DropCollectionTypes": ["SimTrackerHit", "SimCalorimeterHit", "LCRelation", "TrackerHitPlane"],
                                "FullSubsetCollections": [],
                                "KeepCollectionNames": [],
                                "LCIOOutputFile": ["output_digi_light.slcio"],
