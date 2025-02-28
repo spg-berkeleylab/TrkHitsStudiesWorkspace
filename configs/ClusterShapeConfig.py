@@ -11,6 +11,12 @@ parser.add_argument(
     action="store_true",
     default=False,
 )
+muGeo = os.getenv("DET_GEO", 0) #default is MuColv1 geometry
+print(f"Detector geometry provided is {muGeo}. Should you need to change, please set the environment variable $DET_GEO as 1 for MAIAv0 or 2 for MuSICv2.")
+
+if not (muGeo=="0" or muGeo=="1" or muGeo=="2"):
+    raise ValueError(f"Invalid detector geometry provided. Acceptable values are 0-MuColv1, 1-MAIAv0 or 2-MuSICv2. Provided value {muGeo}.")
+
 the_args = parser.parse_known_args()[0]
 
 algList = []
@@ -62,6 +68,10 @@ InitDD4hep.Parameters = {
                          "DD4hepXMLFile": [os.environ.get('MUCOLL_GEO')],
                          "EncodingStringParameterName": ["GlobalTrackerReadoutID"]
                          }
+if muGeo=="1":
+    InitDD4hep.Parameters = {"DD4hepXMLFile": ["/global/cfs/projectdirs/atlas/arastogi/MuonCollider/data/MAIA/detector-simulation/geometries/MAIA_v0/MAIA_v0.xml"]}
+if muGeo=="2":
+    InitDD4hep.Parameters = {"DD4hepXMLFile": ["/global/cfs/projectdirs/atlas/arastogi/MuonCollider/code/TrkHitsStudiesWorkspace/packages/lcgeo/MuColl/MuSIC_v2/MuSIC_v2.xml"]}
 
 MyTrackTruth = MarlinProcessorWrapper("MyTrackTruth")
 MyTrackTruth.OutputLevel = WARNING
