@@ -281,7 +281,7 @@ VXDBarrelRealisticDigi.Parameters = {
                                      "ThresholdSmearSigma": ["25"],
                                      "TimeDigitizeBinning": ["0"],
                                      "TimeDigitizeNumBits": ["10"],
-                                     "TimeMaximum": ["0.09"], #15
+                                     "TimeMaximum": ["15"],
                                      "TimeSmearingSigma": ["0.03"]
                                      }
 
@@ -317,7 +317,7 @@ VXDEndcapRealisticDigi.Parameters = {
                                      "ThresholdSmearSigma": ["25"],
                                      "TimeDigitizeBinning": ["0"],
                                      "TimeDigitizeNumBits": ["10"],
-                                     "TimeMaximum": ["0.09"], #15
+                                     "TimeMaximum": ["15"],
                                      "TimeSmearingSigma": ["0.03"]
                                      }
 
@@ -353,7 +353,7 @@ InnerPlanarRealisticDigi.Parameters = {
                                        "ThresholdSmearSigma": ["25"],
                                        "TimeDigitizeBinning": ["0"],
                                        "TimeDigitizeNumBits": ["10"],
-                                       "TimeMaximum": ["0.18"], #15
+                                       "TimeMaximum": ["15"],
                                        "TimeSmearingSigma": ["0.060"]
                                        }
 
@@ -389,7 +389,7 @@ InnerEndcapRealisticDigi.Parameters = {
                                        "ThresholdSmearSigma": ["25"],
                                        "TimeDigitizeBinning": ["0"],
                                        "TimeDigitizeNumBits": ["10"],
-                                       "TimeMaximum": ["0.18"], #15
+                                       "TimeMaximum": ["15"],
                                        "TimeSmearingSigma": ["0.060"]
                                        }
 
@@ -425,7 +425,7 @@ OuterPlanarRealisticDigi.Parameters = {
                                        "ThresholdSmearSigma": ["25"],
                                        "TimeDigitizeBinning": ["0"],
                                        "TimeDigitizeNumBits": ["10"],
-                                       "TimeMaximum": ["0.18"], #15
+                                       "TimeMaximum": ["15"],
                                        "TimeSmearingSigma": ["0.060"]
                                        }
 
@@ -461,7 +461,7 @@ OuterEndcapRealisticDigi.Parameters = {
                                        "ThresholdSmearSigma": ["25"],
                                        "TimeDigitizeBinning": ["0"],
                                        "TimeDigitizeNumBits": ["10"],
-                                       "TimeMaximum": ["0.18"], #15
+                                       "TimeMaximum": ["15"],
                                        "TimeSmearingSigma": ["0.060"]
                                        }
 
