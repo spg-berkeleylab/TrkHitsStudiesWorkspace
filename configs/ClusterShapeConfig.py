@@ -11,13 +11,25 @@ parser.add_argument(
     action="store_true",
     default=False,
 )
-muGeo = os.getenv("DET_GEO", 0) #default is MuColv1 geometry
-print(f"Detector geometry provided is {muGeo}. Should you need to change, please set the environment variable $DET_GEO as 1 for MAIAv0 or 2 for MuSICv2.")
+parser.add_argument(
+    "--withClusterFilter",
+    help="Use relations collections created after applying cluster filter cuts and renamed without suffix _HTF",
+    action="store_true",
+    default=False,
+)
+parser.add_argument(
+    "--muColDetGeo",
+    help="Muon collider detector geometry, 0-MuCol_v1, 1-MAIA_v0 and 2-MuSIC_v2",
+    type=str,
+    default=0,
+)
 
-if not (muGeo=="0" or muGeo=="1" or muGeo=="2"):
-    raise ValueError(f"Invalid detector geometry provided. Acceptable values are 0-MuColv1, 1-MAIAv0 or 2-MuSICv2. Provided value {muGeo}.")
 
 the_args = parser.parse_known_args()[0]
+
+if not (the_args.muColDetGeo=="0" or the_args.muColDetGeo=="1" or the_args.muColDetGeo=="2"):
+    raise ValueError(f"Invalid detector geometry provided. Acceptable values are 0-MuColv1, 1-MAIAv0 or 2-MuSICv2. Provided value {the_args.muColDetGeo}. Rerun with correct option for --muColDetGeo")
+
 
 algList = []
 evtsvc = EventDataSvc()
@@ -68,10 +80,16 @@ InitDD4hep.Parameters = {
                          "DD4hepXMLFile": [os.environ.get('MUCOLL_GEO')],
                          "EncodingStringParameterName": ["GlobalTrackerReadoutID"]
                          }
-if muGeo=="1":
-    InitDD4hep.Parameters = {"DD4hepXMLFile": ["/global/cfs/projectdirs/atlas/arastogi/MuonCollider/data/MAIA/detector-simulation/geometries/MAIA_v0/MAIA_v0.xml"]}
-if muGeo=="2":
-    InitDD4hep.Parameters = {"DD4hepXMLFile": ["/global/cfs/projectdirs/atlas/arastogi/MuonCollider/code/TrkHitsStudiesWorkspace/packages/lcgeo/MuColl/MuSIC_v2/MuSIC_v2.xml"]}
+
+if the_args.muColDetGeo=="1":
+    InitDD4hep.Parameters = {"DD4hepXMLFile": ["/global/cfs/projectdirs/atlas/arastogi/MuonCollider/data/MAIA/detector-simulation/geometries/MAIA_v0/MAIA_v0.xml"],
+                             "EncodingStringParameterName": ["GlobalTrackerReadoutID"]
+                             }
+    
+if the_args.muColDetGeo=="2":
+    InitDD4hep.Parameters = {"DD4hepXMLFile": ["/global/cfs/projectdirs/atlas/arastogi/MuonCollider/code/TrkHitsStudiesWorkspace/packages/lcgeo/MuColl/MuSIC_v2/MuSIC_v2.xml"],
+                             "EncodingStringParameterName": ["GlobalTrackerReadoutID"]
+                             }
 
 MyTrackTruth = MarlinProcessorWrapper("MyTrackTruth")
 MyTrackTruth.OutputLevel = WARNING
@@ -83,26 +101,33 @@ MyTrackTruth.Parameters = {
                            "TrackerHit2SimTrackerHitRelationName": ["VXDBarrelHitsRelations", "ITBarrelHitsRelations", "OTBarrelHitsRelations", "VXDEndcapHitsRelations", "ITEndcapHitsRelations", "OTEndcapHitsRelations"]
                            }
 
+relSuffix = "_HTF"
+if the_args.withClusterFilter:
+    relSuffix = ""
+
 MyClusterShapeAnalysis = MarlinProcessorWrapper("MyClusterShapeAnalysis")
 MyClusterShapeAnalysis.OutputLevel = WARNING
 MyClusterShapeAnalysis.ProcessorType = "ClusterShapeHistProc"
 MyClusterShapeAnalysis.Parameters = {
-                                     "IBRelationCollection": ["ITBarrelHitsRelations_HTF"],
+                                     "IBRelationCollection": ["ITBarrelHitsRelations"+relSuffix],
                                      "IBTrackerHitsCollection": ["ITBarrelHits"],
-                                     "IERelationCollection": ["ITEndcapHitsRelations_HTF"],
+                                     "IERelationCollection": ["ITEndcapHitsRelations"+relSuffix],
                                      "IETrackerHitsCollection": ["ITEndcapHits"],
                                      "MCParticleCollection": ["MCParticle"],
                                      "MCTrackRelationCollection": ["MCParticle_SiTracks"],
-                                     "OBRelationCollection": ["OTBarrelHitsRelations_HTF"],
+                                     "OBRelationCollection": ["OTBarrelHitsRelations"+relSuffix],
                                      "OBTrackerHitsCollection": ["OTBarrelHits"],
-                                     "OERelationCollection": ["OTEndcapHitsRelations_HTF"],
+                                     "OERelationCollection": ["OTEndcapHitsRelations"+relSuffix],
                                      "OETrackerHitsCollection": ["OTEndcapHits"],
                                      "TrackCollection": ["SiTracks"],
-                                     "VBRelationCollection": ["VXDBarrelHitsRelations_HTF"],
+                                     "VBRelationCollection": ["VXDBarrelHitsRelations"+relSuffix],
                                      "VBTrackerHitsCollection": ["VXDBarrelHits"],
-                                     "VERelationCollection": ["VXDEndcapHitsRelations_HTF"],
-                                     "VETrackerHitsCollection": ["VXDEndcapHits"]
-                                     }
+                                     "VERelationCollection": ["VXDEndcapHitsRelations"+relSuffix],
+                                     "VETrackerHitsCollection": ["VXDEndcapHits"],
+                                     "muColDet": [the_args.muColDetGeo]
+}
+
+
 
 algList.append(MyAIDAProcessor)
 algList.append(EventNumber)
