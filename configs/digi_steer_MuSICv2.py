@@ -282,7 +282,8 @@ VXDBarrelRealisticDigi.Parameters = {
                                      "TimeDigitizeBinning": ["0"],
                                      "TimeDigitizeNumBits": ["10"],
                                      "TimeMaximum": ["15."],
-                                     "TimeSmearingSigma": ["0.03"]
+                                     "TimeSmearingSigma": ["0.03"],
+                                     "LayerIDs": ["0","2","4","6","8"]
                                      }
 
 VXDEndcapRealisticDigi = MarlinProcessorWrapper("VXDEndcapRealisticDigi")
@@ -318,7 +319,8 @@ VXDEndcapRealisticDigi.Parameters = {
                                      "TimeDigitizeBinning": ["0"],
                                      "TimeDigitizeNumBits": ["10"],
                                      "TimeMaximum": ["15."],
-                                     "TimeSmearingSigma": ["0.03"]
+                                     "TimeSmearingSigma": ["0.03"],
+                                     "LayerIDs": ["0","2","4","6"]
                                      }
 
 InnerPlanarRealisticDigi = MarlinProcessorWrapper("InnerPlanarRealisticDigi")
@@ -354,7 +356,8 @@ InnerPlanarRealisticDigi.Parameters = {
                                        "TimeDigitizeBinning": ["0"],
                                        "TimeDigitizeNumBits": ["10"],
                                        "TimeMaximum": ["15."],
-                                       "TimeSmearingSigma": ["0.060"]
+                                       "TimeSmearingSigma": ["0.060"],
+                                       "LayerIDs": ["0","1","2"]
                                        }
 
 InnerEndcapRealisticDigi = MarlinProcessorWrapper("InnerEndcapRealisticDigi")
@@ -390,7 +393,8 @@ InnerEndcapRealisticDigi.Parameters = {
                                        "TimeDigitizeBinning": ["0"],
                                        "TimeDigitizeNumBits": ["10"],
                                        "TimeMaximum": ["15."],
-                                       "TimeSmearingSigma": ["0.060"]
+                                       "TimeSmearingSigma": ["0.060"],
+                                       "LayerIDs": ["0","1","2","3","4","5","6"]
                                        }
 
 OuterPlanarRealisticDigi = MarlinProcessorWrapper("OuterPlanarRealisticDigi")
@@ -426,7 +430,8 @@ OuterPlanarRealisticDigi.Parameters = {
                                        "TimeDigitizeBinning": ["0"],
                                        "TimeDigitizeNumBits": ["10"],
                                        "TimeMaximum": ["15."],
-                                       "TimeSmearingSigma": ["0.060"]
+                                       "TimeSmearingSigma": ["0.060"],
+                                       "LayerIDs": ["0","1","2"]
                                        }
 
 OuterEndcapRealisticDigi = MarlinProcessorWrapper("OuterEndcapRealisticDigi")
@@ -462,7 +467,8 @@ OuterEndcapRealisticDigi.Parameters = {
                                        "TimeDigitizeBinning": ["0"],
                                        "TimeDigitizeNumBits": ["10"],
                                        "TimeMaximum": ["15."],
-                                       "TimeSmearingSigma": ["0.060"]
+                                       "TimeSmearingSigma": ["0.060"],
+                                       "LayerIDs": ["0","1","2","3"]
                                        }
 
 
@@ -1082,19 +1088,19 @@ algList.append(HCalRingDigi)
 algList.append(HCalRingReco)
 algList.append(MuonDigitiser)
 
-    
 if the_args.writeAll:
     algList.append(LCIOWriter_all)
 else:
     if the_args.doClusterFilter:
-#        LCIOWriter_light.Parameters["KeepCollectionNames"]=["VXDBarrelHits", "VXDEndcapHits", "ITBarrelHits", "ITEndcapHits", "OTBarrelHits", "OTEndcapHits", "VXDBarrelHitsRelations", "VXDEndcapHitsRelations", "ITBarrelHitsRelations", "ITEndcapHitsRelations", "OTBarrelHitsRelations", "OTEndcapHitsRelations", "VBPixels_HTF", "VEPixels_HTF", "IBPixels_HTF", "IEPixels_HTF", "OBPixels_HTF", "OEPixels_HTF"]
-        LCIOWriter_light.Parameters["KeepCollectionNames"]=["VXDBarrelHits", "VXDEndcapHits", "ITBarrelHits", "ITEndcapHits", "OTBarrelHits", "OTEndcapHits", "VXDBarrelHitsRelations", "VXDEndcapHitsRelations", "ITBarrelHitsRelations", "ITEndcapHitsRelations", "OTBarrelHitsRelations", "OTEndcapHitsRelations", "VertexBarrelCollection_CF", "VertexEndcapCollection_CF", "InnerTrackerBarrelCollection_CF", "InnerTrackerEndcapCollection_CF", "OuterTrackerBarrelCollection_CF", "OuterTrackerEndcapCollection_CF"] #for running tracking
-    if not the_args.doClusterFilter:
-#        LCIOWriter_light.Parameters["KeepCollectionNames"]=["VXDBarrelHits", "VXDEndcapHits", "ITBarrelHits", "ITEndcapHits", "OTBarrelHits", "OTEndcapHits", "VXDBarrelHitsRelations_HTF", "VXDEndcapHitsRelations_HTF", "ITBarrelHitsRelations_HTF", "ITEndcapHitsRelations_HTF", "OTBarrelHitsRelations_HTF", "OTEndcapHitsRelations_HTF", "VBPixels_HTF", "VEPixels_HTF", "IBPixels_HTF", "IEPixels_HTF", "OBPixels_HTF", "OEPixels_HTF"]
-        LCIOWriter_light.Parameters["KeepCollectionNames"]=["VXDBarrelHits", "VXDEndcapHits", "ITBarrelHits", "ITEndcapHits", "OTBarrelHits", "OTEndcapHits", "VXDBarrelHitsRelations_HTF", "VXDEndcapHitsRelations_HTF", "ITBarrelHitsRelations_HTF", "ITEndcapHitsRelations_HTF", "OTBarrelHitsRelations_HTF", "OTEndcapHitsRelations_HTF","VertexBarrelCollection_HTF", "VertexEndcapCollection_HTF", "InnerTrackerBarrelCollection_HTF", "InnerTrackerEndcapCollection_HTF", "OuterTrackerBarrelCollection_HTF", "OuterTrackerEndcapCollection_HTF"] #for running tracking
+        LCIOWriter_light.Parameters["KeepCollectionNames"]=["VXDBarrelHits", "VXDEndcapHits", "ITBarrelHits", "ITEndcapHits", "OTBarrelHits", "OTEndcapHits", "VXDBarrelHitsRelations", "VXDEndcapHitsRelations", "ITBarrelHitsRelations", "ITEndcapHitsRelations", "OTBarrelHitsRelations", "OTEndcapHitsRelations", "VBPixels_HTF", "VEPixels_HTF", "IBPixels_HTF", "IEPixels_HTF", "OBPixels_HTF", "OEPixels_HTF"]
+        #LCIOWriter_light.Parameters["KeepCollectionNames"]=["VXDBarrelHits", "VXDEndcapHits", "ITBarrelHits", "ITEndcapHits", "OTBarrelHits", "OTEndcapHits", "VXDBarrelHitsRelations", "VXDEndcapHitsRelations", "ITBarrelHitsRelations", "ITEndcapHitsRelations", "OTBarrelHitsRelations", "OTEndcapHitsRelations", "VertexBarrelCollection_CF", "VertexEndcapCollection_CF", "InnerTrackerBarrelCollection_CF", "InnerTrackerEndcapCollection_CF", "OuterTrackerBarrelCollection_CF", "OuterTrackerEndcapCollection_CF"] #for running tracking
+        if not the_args.doClusterFilter:
+        LCIOWriter_light.Parameters["KeepCollectionNames"]=["VXDBarrelHits", "VXDEndcapHits", "ITBarrelHits", "ITEndcapHits", "OTBarrelHits", "OTEndcapHits", "VXDBarrelHitsRelations_HTF", "VXDEndcapHitsRelations_HTF", "ITBarrelHitsRelations_HTF", "ITEndcapHitsRelations_HTF", "OTBarrelHitsRelations_HTF", "OTEndcapHitsRelations_HTF", "VBPixels_HTF", "VEPixels_HTF", "IBPixels_HTF", "IEPixels_HTF", "OBPixels_HTF", "OEPixels_HTF"]
+        #LCIOWriter_light.Parameters["KeepCollectionNames"]=["VXDBarrelHits", "VXDEndcapHits", "ITBarrelHits", "ITEndcapHits", "OTBarrelHits", "OTEndcapHits", "VXDBarrelHitsRelations_HTF", "VXDEndcapHitsRelations_HTF", "ITBarrelHitsRelations_HTF", "ITEndcapHitsRelations_HTF", "OTBarrelHitsRelations_HTF", "OTEndcapHitsRelations_HTF","VertexBarrelCollection_HTF", "VertexEndcapCollection_HTF", "InnerTrackerBarrelCollection_HTF", "InnerTrackerEndcapCollection_HTF", "OuterTrackerBarrelCollection_HTF", "OuterTrackerEndcapCollection_HTF"] #for running tracking
+
         if the_args.doTrkDigiSimple:
-#            LCIOWriter_light.Parameters["KeepCollectionNames"]=["VXDBarrelHits", "VXDEndcapHits", "ITBarrelHits", "ITEndcapHits", "OTBarrelHits", "OTEndcapHits", "VXDBarrelHitsRelations", "VXDEndcapHitsRelations", "ITBarrelHitsRelations", "ITEndcapHitsRelations", "OTBarrelHitsRelations", "OTEndcapHitsRelations"]
-            LCIOWriter_light.Parameters["KeepCollectionNames"]=["VXDBarrelHits", "VXDEndcapHits", "ITBarrelHits", "ITEndcapHits", "OTBarrelHits", "OTEndcapHits", "VXDBarrelHitsRelations", "VXDEndcapHitsRelations", "ITBarrelHitsRelations", "ITEndcapHitsRelations", "OTBarrelHitsRelations", "OTEndcapHitsRelations", "VertexBarrelCollection", "VertexEndcapCollection", "InnerTrackerBarrelCollection", "InnerTrackerEndcapCollection", "OuterTrackerBarrelCollection", "OuterTrackerEndcapCollection"] #for running tracking
+            LCIOWriter_light.Parameters["KeepCollectionNames"]=["VXDBarrelHits", "VXDEndcapHits", "ITBarrelHits", "ITEndcapHits", "OTBarrelHits", "OTEndcapHits", "VXDBarrelHitsRelations", "VXDEndcapHitsRelations", "ITBarrelHitsRelations", "ITEndcapHitsRelations", "OTBarrelHitsRelations", "OTEndcapHitsRelations"]
+            #LCIOWriter_light.Parameters["KeepCollectionNames"]=["VXDBarrelHits", "VXDEndcapHits", "ITBarrelHits", "ITEndcapHits", "OTBarrelHits", "OTEndcapHits", "VXDBarrelHitsRelations", "VXDEndcapHitsRelations", "ITBarrelHitsRelations", "ITEndcapHitsRelations", "OTBarrelHitsRelations", "OTEndcapHitsRelations", "VertexBarrelCollection", "VertexEndcapCollection", "InnerTrackerBarrelCollection", "InnerTrackerEndcapCollection", "OuterTrackerBarrelCollection", "OuterTrackerEndcapCollection"] #for running tracking
 
 
     algList.append(LCIOWriter_light)
