@@ -58,7 +58,7 @@ A quick note for the MusicV2 and MAIA 10 TeV geometries.
     * Geometry files are in this folder: `https://github.com/madbaron/detector-simulation/tree/KITP_10TeV/geometries/MAIA_v0`
     * Material Map: `/global/cfs/cdirs/atlas/spgriso/MuonCollider/data/bib/10TeV-2024/MAIA/ACTSmaps/`
     * BIB files with this geometry on perlmutter: `/global/cfs/cdirs/atlas/spgriso/MuonCollider/data/bib/10TeV-2024/MAIA`
-    * For BIB, in the `OverlayMIX` processor set `NumberOfBackgrounds` to `1666`
+    * For BIB, in the `OverlayMIX` processor set `NumberOfBackgrounds` to `833`
 
 ## Example Commands
 
