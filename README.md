@@ -62,3 +62,11 @@ A quick note for the MusicV2 and MAIA 10 TeV geometries.
 
 ## Example Commands
 
+To run realistic digitization on a single event, overlaying 100% BIB and incoherent pairs background with MAIA geometry, do:
+```bash
+export MUPLUS="/path/to/data/bib/10TeV-2024/MAIA/sim_mp_pruned/"
+export MUMINUS="/path/to/data/bib/10TeV-2024/MAIA/sim_mm_pruned/"
+export IPairs="/path/to/data/MAIA/Sim/IPairs/ipairs_sim.slcio"
+
+k4run /path/to/TrkHitsStudiesWorkspace/configs/digi_steer_MAIAv0.py --LcioEvent.Files sim.slcio --DD4hepXMLFile /path/to/data/MAIA/detector-simulation/geometries/MAIA_v0/MAIA_v0.xml -n 1 --doOverlayFull --OverlayFullPathToMuPlus ${MUPLUS} --OverlayFullPathToMuMinus ${MUMINUS} --OverlayFullNumberBackground 833 --doOverlayIP --OverlayIPBackgroundFileNames ${IPairs}
+```
